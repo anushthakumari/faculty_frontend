@@ -1,3 +1,14 @@
 {
-    "greeet": "Hii"
+    "greet": "Hii",
+    "logout": "Log Out",
+    "sidenav": {
+        "dashboard": "dashboard",
+        "courses": "courses",
+        "add_course": "Create Course",
+        "analytics": "Analytics",
+        "earn": "Earn",
+        "community": "Community",
+        "free_resources": "Free Resources",
+        "help_desk": "Help Desk"
+    }
 }

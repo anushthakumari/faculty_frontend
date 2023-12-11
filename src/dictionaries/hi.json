@@ -1,3 +1,14 @@
 {
-    "greeet": "नमस्ते"
+    "greet": "नमस्ते",
+    "logout": "लॉग आउट करें",
+    "sidenav": {
+        "dashboard": "मुख्य पृष्ठ",
+        "courses": "पाठ्यक्रम",
+        "add_course": "पाठ्यक्रम बनाएं",
+        "analytics": "विश्लेषण",
+        "earn": "कमाएं",
+        "community": "समुदाय",
+        "free_resources": "मुफ्त संसाधन",
+        "help_desk": "सहायता केंद्र"
+    }
 }
