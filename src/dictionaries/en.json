@@ -10,5 +10,12 @@
         "community": "Community",
         "free_resources": "Free Resources",
         "help_desk": "Help Desk"
+    },
+    "dashboard": {
+        "best_course_heading": "Your Best Performing Course",
+        "best_course_title": "Pythagoras Theorem",
+        "best_course_desc": "Unlock the secrets of right triangles and conquer the Pythagorean Theorem!",
+        "views": "Views",
+        "student_enrolled": "Student Enrolled"
     }
 }
