@@ -4,6 +4,7 @@ import Billing from "layouts/billing";
 import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
+import Webinar from "layouts/webinar";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 
@@ -70,6 +71,18 @@ const routes = [
     ),
     route: "/community",
     component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "Webinar",
+    key: "webinar",
+    icon: (
+      <Icon fontSize="small">
+        <PeopleIcon />
+      </Icon>
+    ),
+    route: "/webinar",
+    component: <Webinar />,
   },
   {
     type: "collapse",

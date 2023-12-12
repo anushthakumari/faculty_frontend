@@ -1,13 +1,18 @@
 {
     "greet": "Hii",
     "logout": "Log Out",
+    "commons": {
+        "or": "or",
+        "cancel": "cancel"
+    },
     "sidenav": {
-        "dashboard": "dashboard",
-        "courses": "courses",
+        "dashboard": "Dashboard",
+        "courses": "Courses",
         "add_course": "Create Course",
         "analytics": "Analytics",
         "earn": "Earn",
         "community": "Community",
+        "webinar": "Webinar",
         "free_resources": "Free Resources",
         "help_desk": "Help Desk"
     },
@@ -17,5 +22,13 @@
         "best_course_desc": "Unlock the secrets of right triangles and conquer the Pythagorean Theorem!",
         "views": "Views",
         "student_enrolled": "Student Enrolled"
+    },
+    "webinar": {
+        "host_webinar": "Host A Webinar",
+        "join_webinar": "Join A Webinar",
+        "host_webinar_label": "Create Webinar By Clicking Below Button",
+        "join_webinar_label": "Join Webinar By Clicking Below Button",
+        "please_write_meeting_id": "Please Write Meeting ID",
+        "join": "Join"
     }
 }
