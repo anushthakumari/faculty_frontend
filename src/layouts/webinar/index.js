@@ -134,18 +134,18 @@ function Overview() {
           <MeetingProvider
             config={{
               meetingId,
-              micEnabled: true,
+              micEnabled: false,
               webcamEnabled: true,
               name: "C.V. Raman",
             }}
             token={constants.VIDEO_SDK_TOKEN}
+            joinWithoutUserInteraction
           >
             <MeetingView meetingId={meetingId} onMeetingLeave={onMeetingLeave} />
           </MeetingProvider>
         </MDBox>
       )}
 
-      <Footer />
       {/* join form */}
       <Dialog
         open={isJoinFormOpen}
@@ -184,6 +184,7 @@ function Overview() {
         </DialogActions>
       </Dialog>
 
+      {/* Host loading */}
       <Dialog
         open={createMeetignModalState.isOpen}
         onClose={() => setisJoinFormOpen(false)}

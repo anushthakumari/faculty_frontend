@@ -29,6 +29,14 @@
         "host_webinar_label": "Create Webinar By Clicking Below Button",
         "join_webinar_label": "Join Webinar By Clicking Below Button",
         "please_write_meeting_id": "Please Write Meeting ID",
-        "join": "Join"
+        "join": "Join",
+        "joining_webinar": "joining webinar...",
+        "join_webinar_btn": "Join Webinar",
+        "webinar_id": "Webinar ID",
+        "mute_your_mic": "Mute Your Mic",
+        "unmute_your_mic": "Unmute Your Mic",
+        "close_your_camera": "Close Your Camera",
+        "open_your_camera": "Open Your Camera",
+        "leave_webinar": "Leave Webinar"
     }
 }
