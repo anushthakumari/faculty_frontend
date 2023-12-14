@@ -38,5 +38,10 @@
         "close_your_camera": "Close Your Camera",
         "open_your_camera": "Open Your Camera",
         "leave_webinar": "Leave Webinar"
+    },
+    "add_course": {
+        "create_a_course": "Create A Courses",
+        "start": "start",
+        "give_your_course_a_name": "Give Your Course A Name"
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 const RenderWhen = ({ isTrue, children }) => {
-  if (isTrue) {
+  if (!isTrue) {
     return null;
   }
 

@@ -5,6 +5,7 @@ import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import Webinar from "layouts/webinar";
+import CreateCourse from "layouts/create-course";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 
@@ -38,7 +39,7 @@ const routes = [
     key: "add_course",
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/add_course",
-    component: <Billing />,
+    component: <CreateCourse />,
   },
   // {
   //   type: "collapse",
