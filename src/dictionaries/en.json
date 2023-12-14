@@ -42,6 +42,16 @@
     "add_course": {
         "create_a_course": "Create A Courses",
         "start": "start",
-        "give_your_course_a_name": "Give Your Course A Name"
+        "give_your_course_a_name": "Give Your Course A Name",
+        "course_elements": {
+            "add_heading": "Add Heading",
+            "add_video": "Add Video",
+            "add_audio": "Add Audio",
+            "add_doc": "Add Document",
+            "add_description": "Add Description",
+            "add_d_model": "Add 3d Model",
+            "control_panel": "Control Panel"
+        },
+        "drag_and_drop_elements_here": "Drag And Drop Elements Here"
     }
 }

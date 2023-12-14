@@ -13,6 +13,9 @@ import RenderWhen from "components/RenderWhen";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import Elements from "layouts/create-course/elements";
+import ModuleBuilder from "layouts/create-course/module-builder";
+import ModuleBuilderStateProvier from "./ModuleBuilderState.provider";
 
 //page components
 
@@ -22,10 +25,12 @@ function CreateCourse() {
   const { t } = useTranslation();
 
   const [stepIndex, setStepIndex] = useState(0);
+  const [courseData, setcourseData] = useState({ title: "" });
 
   const handleNameSubmit = (e) => {
     e.preventDefault();
     const course_name = e.target.course_name.value.trim();
+    setcourseData((prev) => ({ ...prev, title: course_name }));
     setStepIndex(1);
   };
 
@@ -34,13 +39,19 @@ function CreateCourse() {
       <DashboardNavbar absolute isMini />
       <MDBox mt={8}>
         <MDTypography variant="h4" mb={3}>
-          {t("add_course.create_a_course")}
+          {courseData.title ? courseData.title : t("add_course.create_a_course")}
         </MDTypography>
         <MDBox mb={3}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={9}>
+          <Grid position={"relative"} container spacing={3}>
+            <Grid item xs={12} md={8.5}>
               <MDBox flex={1} display="flex" justifyContent="center" alignItems="center">
-                <Card style={{ minHeight: "70vh", width: "100%", padding: CARD_PADDDING }}>
+                <Card
+                  style={{
+                    minHeight: "70vh",
+                    width: "100%",
+                    padding: CARD_PADDDING,
+                  }}
+                >
                   {/* initial Step 0 */}
                   <RenderWhen isTrue={stepIndex === 0}>
                     <MDBox
@@ -74,11 +85,18 @@ function CreateCourse() {
                       </MDButton>
                     </MDBox>
                   </RenderWhen>
+
+                  {/* Course Creator */}
+                  <RenderWhen isTrue={stepIndex === 1}>
+                    <ModuleBuilderStateProvier>
+                      <ModuleBuilder />
+                    </ModuleBuilderStateProvier>
+                  </RenderWhen>
                 </Card>
               </MDBox>
             </Grid>
             {/* Help */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={3} position={"fixed"} right={0} width={"100%"}>
               <MDBox>
                 <Card
                   sx={{
@@ -88,6 +106,10 @@ function CreateCourse() {
                 >
                   <RenderWhen isTrue={stepIndex === 0}>
                     <MDTypography>How to create your personalised course?</MDTypography>
+                  </RenderWhen>
+
+                  <RenderWhen isTrue={stepIndex === 1}>
+                    <Elements />
                   </RenderWhen>
                 </Card>
               </MDBox>
