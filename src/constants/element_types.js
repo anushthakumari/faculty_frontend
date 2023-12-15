@@ -1,4 +1,5 @@
 const element_types = {
+  section_title: "section_title",
   video: "video",
   heading: "heading",
   desc: "desc",

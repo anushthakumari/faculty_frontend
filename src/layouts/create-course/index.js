@@ -13,13 +13,14 @@ import RenderWhen from "components/RenderWhen";
 
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Elements from "layouts/create-course/elements";
+import ControlPanel from "layouts/create-course/control-panel";
 import ModuleBuilder from "layouts/create-course/module-builder";
 import ModuleBuilderStateProvier from "./ModuleBuilderState.provider";
 
 //page components
 
 const CARD_PADDDING = "15px";
+const HEIGHT = "70vh";
 
 function CreateCourse() {
   const { t } = useTranslation();
@@ -37,23 +38,23 @@ function CreateCourse() {
   return (
     <DashboardLayout>
       <DashboardNavbar absolute isMini />
-      <MDBox mt={8}>
-        <MDTypography variant="h4" mb={3}>
+      <MDBox>
+        <MDTypography variant="h4" textTransform="capitalize">
           {courseData.title ? courseData.title : t("add_course.create_a_course")}
         </MDTypography>
         <MDBox mb={3}>
           <Grid position={"relative"} container spacing={3}>
             <Grid item xs={12} md={8.5}>
               <MDBox flex={1} display="flex" justifyContent="center" alignItems="center">
-                <Card
-                  style={{
-                    minHeight: "70vh",
-                    width: "100%",
-                    padding: CARD_PADDDING,
-                  }}
-                >
-                  {/* initial Step 0 */}
-                  <RenderWhen isTrue={stepIndex === 0}>
+                {/* initial Step 0 */}
+                <RenderWhen isTrue={stepIndex === 0}>
+                  <Card
+                    style={{
+                      minHeight: HEIGHT,
+                      width: "100%",
+                      padding: CARD_PADDDING,
+                    }}
+                  >
                     <MDBox
                       display="flex"
                       flexDirection="column"
@@ -63,7 +64,7 @@ function CreateCourse() {
                       component="form"
                       onSubmit={handleNameSubmit}
                       sx={{
-                        height: "70vh",
+                        height: HEIGHT,
                         width: "100%",
                       }}
                     >
@@ -84,32 +85,34 @@ function CreateCourse() {
                         {t("add_course.start")}
                       </MDButton>
                     </MDBox>
-                  </RenderWhen>
+                  </Card>
+                </RenderWhen>
 
-                  {/* Course Creator */}
-                  <RenderWhen isTrue={stepIndex === 1}>
+                {/* module builder */}
+                <RenderWhen isTrue={stepIndex === 1}>
+                  <MDBox flex={1}>
                     <ModuleBuilderStateProvier>
                       <ModuleBuilder />
                     </ModuleBuilderStateProvier>
-                  </RenderWhen>
-                </Card>
+                  </MDBox>
+                </RenderWhen>
               </MDBox>
             </Grid>
-            {/* Help */}
-            <Grid item xs={12} md={3} position={"fixed"} right={0} width={"100%"}>
+            {/* Help & control panel */}
+            <Grid item xs={12} md={3} position={"fixed"} right={"10px"} top={"55px"} width={"100%"}>
               <MDBox>
                 <Card
                   sx={{
                     padding: CARD_PADDDING,
                   }}
-                  style={{ minHeight: "70vh" }}
+                  style={{ minHeight: HEIGHT }}
                 >
                   <RenderWhen isTrue={stepIndex === 0}>
                     <MDTypography>How to create your personalised course?</MDTypography>
                   </RenderWhen>
 
                   <RenderWhen isTrue={stepIndex === 1}>
-                    <Elements />
+                    <ControlPanel />
                   </RenderWhen>
                 </Card>
               </MDBox>

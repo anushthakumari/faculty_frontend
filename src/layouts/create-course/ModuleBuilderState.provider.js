@@ -1,17 +1,35 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
 
+import element_types from "constants/element_types";
+
 const ModuleBuilderStateContext = createContext({});
 
 const ModuleBuilderState = ({ children }) => {
-  const [data, setdata] = useState([]);
+  const [data, setdata] = useState([[{ type: element_types.section_title }]]);
 
-  const addContent = useCallback((type) => {
-    setdata((prev) => [...prev, { type }]);
+  const addChapter = useCallback(() => {
+    setdata((prev) => [...prev, [{ type: element_types.section_title }]]);
   }, []);
+
+  const addContent = useCallback((type, chapterIndex = 0) => {
+    setdata((prev) => {
+      const newSate = [...prev];
+      newSate[chapterIndex] = [...newSate[chapterIndex], { type }];
+    });
+  }, []);
+
+  const getChapterElementsByIndex = useCallback(
+    (chapterIndex = 0) => {
+      return data[chapterIndex];
+    },
+    [data]
+  );
 
   const value = {
     data,
+    addChapter,
     addContent,
+    getChapterElementsByIndex,
   };
 
   return (

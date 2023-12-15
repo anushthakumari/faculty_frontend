@@ -52,6 +52,8 @@
             "add_d_model": "Add 3d Model",
             "control_panel": "Control Panel"
         },
-        "drag_and_drop_elements_here": "Drag And Drop Elements Here"
+        "drag_and_drop_elements_here": "Drag And Drop Elements Here",
+        "add_chapter": "Add Chapter",
+        "write_chapter_title_here": "Write Chapter Title Here"
     }
 }

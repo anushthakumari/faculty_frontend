@@ -47,7 +47,7 @@ const items = [
   },
 ];
 
-const Index = () => {
+const ControlPanel = () => {
   const { t } = useTranslation();
 
   const handleDragStart = (type, e) => {
@@ -91,4 +91,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default ControlPanel;

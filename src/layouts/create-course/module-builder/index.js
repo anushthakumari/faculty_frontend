@@ -3,69 +3,42 @@ import { useTranslation } from "react-i18next";
 
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import RenderWhen from "components/RenderWhen";
 
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
 
 import { useModuleBuilderState } from "../ModuleBuilderState.provider";
+import ChapterSection from "./ChapterSection";
+import MDButton from "components/MDButton";
+
+const HEIGHT = "70vh";
+const CARD_PADDDING = "10px";
 
 const ModuleBuilder = () => {
   const { t } = useTranslation();
-  const [isDropping, setisDropping] = useState(false);
-  const { data, addContent } = useModuleBuilderState();
-
-  const handleDragOver = (event) => {
-    setisDropping(true);
-    event.preventDefault();
-  };
-
-  const handleDragLeave = () => {
-    setisDropping(false);
-  };
-
-  const handleOnDrop = (e) => {
-    const element_type = e.dataTransfer.getData("element_type");
-
-    if (!element_type) {
-      return;
-    }
-
-    addContent(element_type);
-    setisDropping(false);
-  };
+  const { data, addChapter } = useModuleBuilderState();
 
   return (
-    <MDBox minHeight="70vh" padding={3}>
-      <div onDrop={handleOnDrop} onDragLeave={handleDragLeave} onDragOver={handleDragOver}>
-        <Stack minHeight={"70vh"} position="relative" gap={2}>
-          <MDTypography variant="h4">Maths Course By Anand!</MDTypography>
-          {data.map((v) => (
-            <MDBox width="100%" height="100px" padding={2} key={v.type}>
-              <Typography>{v.type} element</Typography>
+    <MDBox padding={3}>
+      <Stack minHeight={"70vh"} position="relative" gap={2}>
+        {data.map((v, i) => (
+          <Card
+            key={i}
+            style={{
+              minHeight: HEIGHT,
+              width: "100%",
+              padding: CARD_PADDDING,
+            }}
+          >
+            <MDBox width="100%" padding={2}>
+              <ChapterSection chapterIndex={i} />
             </MDBox>
-          ))}
-          <RenderWhen isTrue={isDropping}>
-            <MDBox
-              display={"flex"}
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-              width="100%"
-              height="100%"
-              position="absolute"
-              sx={{
-                borderRadius: "20px",
-                border: "1px dashed #333",
-                cursor: "pointer",
-                minHeight: "60vh",
-              }}
-            >
-              <Typography>{t("add_course.drag_and_drop_elements_here")}</Typography>
-            </MDBox>
-          </RenderWhen>
-        </Stack>
-      </div>
+          </Card>
+        ))}
+        <MDButton color="primary" size="large" onClick={addChapter}>
+          {t("add_course.add_chapter")}
+        </MDButton>
+      </Stack>
     </MDBox>
   );
 };
