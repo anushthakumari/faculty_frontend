@@ -3,7 +3,8 @@
     "logout": "Log Out",
     "commons": {
         "or": "or",
-        "cancel": "cancel"
+        "cancel": "cancel",
+        "remove": "Remove"
     },
     "sidenav": {
         "dashboard": "Dashboard",
@@ -44,16 +45,17 @@
         "start": "start",
         "give_your_course_a_name": "Give Your Course A Name",
         "course_elements": {
-            "add_heading": "Add Heading",
-            "add_video": "Add Video",
-            "add_audio": "Add Audio",
-            "add_doc": "Add Document",
-            "add_description": "Add Description",
-            "add_d_model": "Add 3d Model",
+            "add_heading": "Heading",
+            "add_video": "Video",
+            "add_audio": "Audio",
+            "add_doc": "Document",
+            "add_description": "Description",
+            "add_d_model": "3d Model",
             "control_panel": "Control Panel"
         },
         "drag_and_drop_elements_here": "Drag And Drop Elements Here",
         "add_chapter": "Add Chapter",
-        "write_chapter_title_here": "Write Chapter Title Here"
+        "write_chapter_title_here": "Write Chapter Title Here",
+        "write_heading_here": "Write Heading Here"
     }
 }

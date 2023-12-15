@@ -73,10 +73,24 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
 
   // Render all the routes from the routes.js (All the visible items on the Sidenav)
   const renderRoutes = routes.map(
-    ({ type, name: routeDisplayName, icon, title, noCollapse, key, href, route }) => {
+    ({
+      type,
+      name: routeDisplayName,
+      icon,
+      title,
+      noCollapse,
+      key,
+      href,
+      route,
+      hideInSideNav,
+    }) => {
       let returnValue;
 
       const { t } = useTranslation();
+
+      if (hideInSideNav) {
+        return null;
+      }
 
       const name = t("sidenav." + key);
 
@@ -115,7 +129,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             mb={1}
             ml={1}
           >
-            {title}reffff
+            {title}
           </MDTypography>
         );
       } else if (type === "divider") {

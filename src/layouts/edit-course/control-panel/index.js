@@ -56,17 +56,18 @@ const ControlPanel = () => {
 
   return (
     <MDBox padding={1}>
-      <MDTypography variant="h4" mb={2}>
+      <MDTypography variant="h5" mb={2}>
         {t("add_course.course_elements.control_panel")}
       </MDTypography>
-      <Grid gap={1} container>
+      <Grid gap={1} container width={"100%"}>
         {items.map((v) => (
           <Grid
             key={v.title}
             xs={12}
-            md={5.8}
+            md={5.5}
             draggable
             onDragStart={handleDragStart.bind(this, v.type)}
+            flex={1}
             item
           >
             <MDBox
@@ -74,15 +75,17 @@ const ControlPanel = () => {
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              height="120px"
+              height="100px"
+              width={"100%"}
+              flex={1}
               sx={{
                 borderRadius: "20px",
-                border: "1px solid #333",
+                border: "1px solid #d3d3d3",
                 cursor: "pointer",
               }}
             >
               <v.Icon />
-              <MDTypography>{t(v.title)}</MDTypography>
+              <MDTypography variant="body2">{t(v.title)}</MDTypography>
             </MDBox>
           </Grid>
         ))}

@@ -1,13 +1,10 @@
 import Dashboard from "layouts/dash";
 import Tables from "layouts/tables";
-import Billing from "layouts/billing";
-import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import Webinar from "layouts/webinar";
 import CreateCourse from "layouts/create-course";
-import SignIn from "layouts/authentication/sign-in";
-import SignUp from "layouts/authentication/sign-up";
+import EditCourse from "layouts/edit-course";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -40,6 +37,15 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/add_course",
     component: <CreateCourse />,
+  },
+  {
+    type: "collapse",
+    name: "Edit Course",
+    key: "edit_course",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/edit_course/:id",
+    component: <EditCourse />,
+    hideInSideNav: true,
   },
   // {
   //   type: "collapse",
