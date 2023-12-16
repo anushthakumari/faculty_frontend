@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
 
 import Stack from "@mui/material/Stack";
 

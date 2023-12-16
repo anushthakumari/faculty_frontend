@@ -4,7 +4,9 @@
     "commons": {
         "or": "or",
         "cancel": "cancel",
-        "remove": "Remove"
+        "remove": "Remove",
+        "save": "save",
+        "loading": "loading..."
     },
     "sidenav": {
         "dashboard": "Dashboard",
@@ -51,11 +53,17 @@
             "add_doc": "Document",
             "add_description": "Description",
             "add_d_model": "3d Model",
-            "control_panel": "Control Panel"
+            "control_panel": "Control Panel",
+            "image": "image"
         },
         "drag_and_drop_elements_here": "Drag And Drop Elements Here",
         "add_chapter": "Add Chapter",
         "write_chapter_title_here": "Write Chapter Title Here",
-        "write_heading_here": "Write Heading Here"
+        "write_heading_here": "Write Heading Here",
+        "upload_file": "Upload File",
+        "choose_file_from_system": "Choose File From System",
+        "no_files_found": "No Files Found",
+        "search_file_from_free_resourse": "Search Files From Free Resource",
+        "select_file": "Select File"
     }
 }

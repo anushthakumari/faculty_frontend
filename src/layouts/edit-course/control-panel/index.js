@@ -10,16 +10,13 @@ import DocumentIcon from "@mui/icons-material/Description";
 import DescriptionIcon from "@mui/icons-material/ViewHeadline";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import ViewInArIcon from "@mui/icons-material/ViewInAr";
+import ImageIcon from "@mui/icons-material/Image";
+
 import MDTypography from "components/MDTypography";
 
 import element_types from "constants/element_types";
 
 const items = [
-  {
-    Icon: OndemandVideoIcon,
-    title: "add_course.course_elements.add_video",
-    type: element_types.video,
-  },
   {
     Icon: TextFieldsIcon,
     title: "add_course.course_elements.add_heading",
@@ -31,15 +28,26 @@ const items = [
     type: element_types.desc,
   },
   {
-    Icon: DocumentIcon,
-    title: "add_course.course_elements.add_doc",
-    type: element_types.doc,
+    Icon: ImageIcon,
+    title: "add_course.course_elements.image",
+    type: element_types.image,
+  },
+  {
+    Icon: OndemandVideoIcon,
+    title: "add_course.course_elements.add_video",
+    type: element_types.video,
   },
   {
     Icon: AudiotrackIcon,
     title: "add_course.course_elements.add_audio",
     type: element_types.audio,
   },
+  {
+    Icon: DocumentIcon,
+    title: "add_course.course_elements.add_doc",
+    type: element_types.doc,
+  },
+
   {
     Icon: ViewInArIcon,
     title: "add_course.course_elements.add_d_model",

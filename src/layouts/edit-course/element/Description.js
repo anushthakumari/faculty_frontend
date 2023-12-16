@@ -6,10 +6,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import Box from "@mui/material/Box";
 
-import {
-  useModuleBuilderState,
-  useChapterElementKeyValue,
-} from "layouts/edit-course/ModuleBuilderState.provider";
+import { useModuleBuilderState } from "layouts/edit-course/ModuleBuilderState.provider";
 
 const Description = ({ chapterIndex, element_id, ...rest }) => {
   const { t } = useTranslation();

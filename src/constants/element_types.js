@@ -6,6 +6,8 @@ const element_types = {
   doc: "doc",
   audio: "audio",
   model: "model",
+  image: "image",
+  index: "index",
 };
 
 export default element_types;

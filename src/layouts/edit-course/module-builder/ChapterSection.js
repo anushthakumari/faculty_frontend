@@ -10,22 +10,43 @@ import Element from "layouts/edit-course/element";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import Button from "@mui/material/Button";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useModuleBuilderState } from "../ModuleBuilderState.provider";
+import {
+  useModuleBuilderState,
+  useGetChapterElementsByIndex,
+} from "../ModuleBuilderState.provider";
+import element_types from "constants/element_types";
+
+import FileUploader from "./FileUploader";
+
+const upload_elements = [
+  element_types.video,
+  element_types.audio,
+  element_types.doc,
+  element_types.model,
+  element_types.image,
+];
 
 const HEIGHT = "200px";
 const CARD_PADDDING = "10px";
 
 const ChapterSection = ({ chapterIndex = 0 }) => {
   const { t } = useTranslation();
-  const [isDropping, setisDropping] = useState(false);
-  const { getChapterElementsByIndex, addElementToChapter, removeChapterByIndex } =
-    useModuleBuilderState();
+  const { addElementToChapter, removeChapterByIndex } = useModuleBuilderState();
 
-  const chapterElements = getChapterElementsByIndex(chapterIndex);
+  const [isDropping, setisDropping] = useState(false);
+  const [fileUploadSate, setfileUploadSate] = useState({
+    isOpen: false,
+    type: "",
+  });
+
+  const chapterElements = useGetChapterElementsByIndex(chapterIndex);
+
+  const chapterElementsWithoutChapterIndex = chapterElements.filter(
+    (v) => v.type !== element_types.index
+  );
 
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -46,12 +67,31 @@ const ChapterSection = ({ chapterIndex = 0 }) => {
       return;
     }
 
+    if (upload_elements.includes(element_type)) {
+      setfileUploadSate({ isOpen: true, type: element_type });
+      setisDropping(false);
+      return;
+    }
+
     addElementToChapter(element_type, chapterIndex);
     setisDropping(false);
   };
 
+  const handleFileUploadSuccess = (asset = {}) => {
+    addElementToChapter(asset.element_type, chapterIndex, {
+      file_url: asset.file_url,
+      asset_id: asset._id,
+      asset_userame: asset.user_name,
+      asset_is_private: asset.is_private,
+    });
+  };
+
   const handleRemove = () => {
     removeChapterByIndex(chapterIndex);
+  };
+
+  const handleUploaderClose = () => {
+    setfileUploadSate({ isOpen: false, type: null });
   };
 
   return (
@@ -80,8 +120,8 @@ const ChapterSection = ({ chapterIndex = 0 }) => {
       </RenderWhen>
       <MDBox padding={1}>
         <Stack gap={2}>
-          {chapterElements.map((v, i) => (
-            <MDBox width="100%" key={i}>
+          {chapterElementsWithoutChapterIndex.map((v, i) => (
+            <MDBox width="100%" key={v.element_id}>
               <Element {...v} chapterIndex={chapterIndex} />
             </MDBox>
           ))}
@@ -106,6 +146,12 @@ const ChapterSection = ({ chapterIndex = 0 }) => {
           <Typography>{t("add_course.drag_and_drop_elements_here")}</Typography>
         </MDBox>
       </RenderWhen>
+      <FileUploader
+        open={fileUploadSate.isOpen}
+        type={fileUploadSate.type}
+        onClose={handleUploaderClose}
+        onSuccess={handleFileUploadSuccess}
+      />
     </Card>
   );
 };
