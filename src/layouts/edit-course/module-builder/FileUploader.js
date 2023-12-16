@@ -28,15 +28,37 @@ const file_types = {
   [element_types.image]: "image/*",
 };
 
+const static_models = [
+  {
+    _id: "randomstrin1",
+    file_url: "/realistic_human_heart.glb",
+    title: "A Realistic Human Heart",
+    element_type: "model",
+    is_private: false,
+    user_name: "Jai Shankar",
+    createdAt: "2023-12-16T19:29:29.439+00:00",
+  },
+  {
+    _id: "randomstrin2",
+    file_url: "/modular_suspension.glb",
+    title: "A Modular Suspension",
+    element_type: "model",
+    is_private: false,
+    user_name: "Jai Shankar",
+    createdAt: "2023-12-16T19:29:29.439+00:00",
+  },
+];
+
 export default function FileUploader({ open, onClose, type, onSuccess }) {
   const { t } = useTranslation();
 
   const accept = file_types[type];
+  const isModel = type === element_types.model;
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setisLoading] = useState(false);
-  const [files, setfiles] = useState([]);
+  const [files, setfiles] = useState(isModel ? static_models : []);
 
   const filteredFiles = files
     .filter((file) => file.title.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -48,8 +70,6 @@ export default function FileUploader({ open, onClose, type, onSuccess }) {
       month: "short",
       day: "numeric",
     });
-
-  const isModel = type === element_types.model;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -119,11 +139,17 @@ export default function FileUploader({ open, onClose, type, onSuccess }) {
   );
 
   useEffect(() => {
-    resourcesAPIs
-      .get_res(type)
-      .then((d) => setfiles(d))
-      .catch();
-  }, [type]);
+    if (!isModel) {
+      resourcesAPIs
+        .get_res(type)
+        .then((d) => {
+          setfiles(d);
+        })
+        .catch();
+    } else {
+      setfiles(static_models);
+    }
+  }, [type, isModel]);
 
   return (
     <Dialog

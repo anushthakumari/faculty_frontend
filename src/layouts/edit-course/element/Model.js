@@ -14,7 +14,7 @@ export default function App({ file_url }) {
   return (
     <MDBox bgColor="#5E5E5E">
       <Canvas dpr={[1, 2]} shadows camera={{ fav: 50 }} style={{ height: "300px" }}>
-        <PresentationControls speed={1.5} global zoom={3} polar={[-0.1, Math.PI / 4]}>
+        <PresentationControls speed={1.5} global zoom={0.6} polar={[-0.1, Math.PI / 4]}>
           <Stage environment={null}>
             <Model file_url={file_url} scale={0.01} />
           </Stage>
