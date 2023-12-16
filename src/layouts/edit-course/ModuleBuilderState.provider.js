@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
 import { v4 as uuid } from "uuid";
 
 import element_types from "constants/element_types";
@@ -79,3 +79,15 @@ const ModuleBuilderState = ({ children }) => {
 export default ModuleBuilderState;
 
 export const useModuleBuilderState = () => useContext(ModuleBuilderStateContext);
+
+export const useChapterElementKeyValue = (chapterIndex, element_id, key = "") => {
+  const { data } = useModuleBuilderState();
+
+  return useMemo(() => {
+    //get element
+    const chapterElements = data[chapterIndex];
+    const elementIndex = chapterElements.findIndex((v) => v.element_id === element_id);
+
+    return chapterElements[elementIndex][key];
+  }, [data]);
+};
