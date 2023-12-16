@@ -14,7 +14,7 @@ const ModuleBuilder = () => {
   const { data, addChapter } = useModuleBuilderState();
 
   return (
-    <MDBox padding={3}>
+    <MDBox>
       <Stack position="relative" gap={2}>
         {data.map((v, i) => (
           <ChapterSection key={i} chapterIndex={i} />

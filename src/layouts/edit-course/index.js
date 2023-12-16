@@ -43,7 +43,7 @@ function CreateCourse() {
               </MDBox>
             </Grid>
             {/* Help & control panel */}
-            <Grid item xs={12} md={3} position={"fixed"} width={"400px"} right={10}>
+            <Grid item xs={12} md={2.5} position={"fixed"} width={"400px"} right={10}>
               <MDBox>
                 <Card
                   sx={{
