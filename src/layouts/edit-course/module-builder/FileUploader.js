@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
@@ -28,16 +28,6 @@ const file_types = {
   [element_types.image]: "image/*",
 };
 
-const files = [
-  {
-    title: "This is how cars are made!",
-    id: 1,
-    uploadDate: "2023-12-16T05:54:18.186Z",
-    size: "13",
-    uploader: "jai Shankar",
-  },
-];
-
 export default function FileUploader({ open, onClose, type, onSuccess }) {
   const { t } = useTranslation();
 
@@ -46,6 +36,7 @@ export default function FileUploader({ open, onClose, type, onSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const [files, setfiles] = useState([]);
 
   const filteredFiles = files
     .filter((file) => file.title.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -102,9 +93,15 @@ export default function FileUploader({ open, onClose, type, onSuccess }) {
       });
   };
 
+  const handleSelectFile = (fileData = {}) => {
+    onSuccess?.(fileData);
+    setSelectedFile();
+    onClose?.();
+  };
+
   const renderFile = (file) => (
     <ListItem
-      key={file.id}
+      key={file._id}
       sx={{
         my: "6px",
         padding: "8px",
@@ -113,15 +110,20 @@ export default function FileUploader({ open, onClose, type, onSuccess }) {
       }}
     >
       <ListItemText
-        style={{ flex: 1 }}
+        style={{ flex: 1, textTransform: "capitalize" }}
         primary={file.title}
-        secondary={`${file.size} MB | Uploaded on ${formatDate(file.uploadDate)} by ${
-          file.uploader
-        }`}
+        secondary={`${formatDate(file.createdAt)} by ${file.user_name}`}
       />
-      <Button>{t("add_course.select_file")}</Button>
+      <Button onClick={handleSelectFile.bind(this, file)}>{t("add_course.select_file")}</Button>
     </ListItem>
   );
+
+  useEffect(() => {
+    resourcesAPIs
+      .get_res(type)
+      .then((d) => setfiles(d))
+      .catch();
+  }, [type]);
 
   return (
     <Dialog

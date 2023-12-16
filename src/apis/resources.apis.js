@@ -43,9 +43,20 @@ const delete_res = async (assest_id = "") => {
   return await axios.delete("/delete/" + assest_id);
 };
 
+const get_res = async (element_type) => {
+  const { data } = await axios.get("/assets", {
+    params: {
+      element_type,
+    },
+  });
+
+  return data;
+};
+
 const resourcesAPIs = {
   upload_res,
   delete_res,
+  get_res,
 };
 
 export default resourcesAPIs;
