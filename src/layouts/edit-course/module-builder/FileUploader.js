@@ -24,7 +24,7 @@ const file_types = {
   [element_types.video]: "video/*",
   [element_types.audio]: "audio/*",
   [element_types.doc]: ".doc,.docx,.csv,.ppt,.pptx,.xls,.xlsx",
-  [element_types.model]: ".obj",
+  [element_types.model]: ".glb",
   [element_types.image]: "image/*",
 };
 

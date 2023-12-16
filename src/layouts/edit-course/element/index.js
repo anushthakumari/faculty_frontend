@@ -12,6 +12,7 @@ import Image from "./Image";
 import Video from "./Video";
 import Audio from "./Audio";
 import Document from "./Document";
+import Model from "./Model";
 
 import { useModuleBuilderState } from "layouts/edit-course/ModuleBuilderState.provider";
 
@@ -25,6 +26,7 @@ const ELEMENTS = {
   [element_types.video]: Video,
   [element_types.audio]: Audio,
   [element_types.doc]: Document,
+  [element_types.model]: Model,
 };
 
 const Index = ({ type, ...rest }) => {
