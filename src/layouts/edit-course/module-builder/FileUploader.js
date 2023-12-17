@@ -145,7 +145,7 @@ export default function FileUploader({ open, onClose, type, onSuccess }) {
         .then((d) => {
           setfiles(d);
         })
-        .catch();
+        .catch(() => {});
     } else {
       setfiles(static_models);
     }

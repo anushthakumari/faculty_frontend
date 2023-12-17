@@ -37,7 +37,10 @@ const Index = ({ type, ...rest }) => {
   const handleDelete = () => {
     removeChapterElementByElementID(rest.chapterIndex, rest.element_id);
     if (rest.asset_id && rest.asset_is_private) {
-      resourcesAPIs.delete_res(rest.asset_id).then().catch();
+      resourcesAPIs
+        .delete_res(rest.asset_id)
+        .then()
+        .catch(() => {});
     }
   };
 
