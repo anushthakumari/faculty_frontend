@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDBadge from "components/MDBadge";
@@ -34,6 +36,8 @@ const useCoursesData = (onAction) => {
   const [rows, setrows] = useState([]);
   const [coursesData, setcoursesData] = useState([]);
 
+  const navigate = useNavigate();
+
   const fetchData = useCallback(() => {
     setcoursesData(d);
     setrows(
@@ -68,7 +72,7 @@ const useCoursesData = (onAction) => {
             color="text"
             fontWeight="medium"
             onClick={() => {
-              onAction?.(v);
+              navigate("/course_comments/" + v.id);
             }}
           >
             {i18next.t("courses.view_comments")}
@@ -80,7 +84,7 @@ const useCoursesData = (onAction) => {
             color="text"
             fontWeight="medium"
             onClick={() => {
-              onAction?.(v);
+              navigate("/edit_course/" + v.id);
             }}
           >
             {i18next.t("courses.edit_course")}

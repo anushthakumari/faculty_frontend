@@ -37,6 +37,9 @@
         "edit_course": "Edit Course",
         "view_comments": "View Comments"
     },
+    "course_comments": {
+        "page_title": "Course Comments"
+    },
     "webinar": {
         "host_webinar": "Host A Webinar",
         "join_webinar": "Join A Webinar",

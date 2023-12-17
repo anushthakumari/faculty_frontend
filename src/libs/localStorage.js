@@ -47,12 +47,50 @@ const savePost = (data = {}) => {
   secureLocalStorage.setItem(storage_keys.POSTS, posts);
 };
 
+const getComments = () => {
+  const user = getUser();
+  const comments = secureLocalStorage.getItem(storage_keys.COMMENTS);
+
+  return comments
+    ? comments
+    : [
+        {
+          id: 0,
+          ...user,
+          caption: "I really loved it!",
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: 1,
+          ...user,
+          caption: "you made it really easy!",
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: 2,
+          ...user,
+          caption: "your course is goood!",
+          createdAt: new Date().toISOString(),
+        },
+      ];
+};
+
+const saveComment = (data = {}) => {
+  const saved_comm = getComments();
+
+  const comments = [...saved_comm, data];
+
+  secureLocalStorage.setItem(storage_keys.COMMENTS, comments);
+};
+
 const localStorage = {
   setUser,
   unsetUser,
   getUser,
   getPosts,
   savePost,
+  getComments,
+  saveComment,
 };
 
 export default localStorage;

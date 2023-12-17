@@ -8,6 +8,7 @@ import EditCourse from "layouts/edit-course";
 import Courses from "layouts/courses";
 import FreeResources from "layouts/free-resources";
 import HelpDesk from "layouts/help-desk";
+import CourseComments from "layouts/course-comments";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -49,6 +50,15 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/edit_course/:id",
     component: <EditCourse />,
+    hideInSideNav: true,
+  },
+  {
+    type: "collapse",
+    name: "Course Comments",
+    key: "course_comments",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/course_comments/:id",
+    component: <CourseComments />,
     hideInSideNav: true,
   },
   // {
