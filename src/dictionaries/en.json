@@ -32,6 +32,11 @@
         "views": "Views",
         "student_enrolled": "Student Enrolled"
     },
+    "courses": {
+        "page_title": "Your Courses",
+        "edit_course": "Edit Course",
+        "view_comments": "View Comments"
+    },
     "webinar": {
         "host_webinar": "Host A Webinar",
         "join_webinar": "Join A Webinar",

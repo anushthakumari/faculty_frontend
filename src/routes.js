@@ -5,6 +5,7 @@ import Profile from "layouts/profile";
 import Webinar from "layouts/webinar";
 import CreateCourse from "layouts/create-course";
 import EditCourse from "layouts/edit-course";
+import Courses from "layouts/courses";
 import FreeResources from "layouts/free-resources";
 import HelpDesk from "layouts/help-desk";
 
@@ -31,7 +32,7 @@ const routes = [
     key: "courses",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/courses",
-    component: <Tables />,
+    component: <Courses />,
   },
   {
     type: "collapse",
