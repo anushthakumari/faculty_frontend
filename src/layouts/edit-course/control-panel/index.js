@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
@@ -11,10 +13,14 @@ import DescriptionIcon from "@mui/icons-material/ViewHeadline";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import ViewInArIcon from "@mui/icons-material/ViewInAr";
 import ImageIcon from "@mui/icons-material/Image";
+import QuizIcon from "@mui/icons-material/Quiz";
+import SaveIcon from "@mui/icons-material/Save";
+import PublishIcon from "@mui/icons-material/Publish";
 
 import MDTypography from "components/MDTypography";
 
 import element_types from "constants/element_types";
+import MDButton from "components/MDButton";
 
 const items = [
   {
@@ -47,11 +53,15 @@ const items = [
     title: "add_course.course_elements.add_doc",
     type: element_types.doc,
   },
-
   {
     Icon: ViewInArIcon,
     title: "add_course.course_elements.add_d_model",
     type: element_types.model,
+  },
+  {
+    Icon: QuizIcon,
+    title: "add_course.course_elements.add_quiz",
+    type: element_types.quiz,
   },
 ];
 
@@ -98,6 +108,20 @@ const ControlPanel = () => {
           </Grid>
         ))}
       </Grid>
+      <Stack mt={5} gap={3}>
+        <Button
+          startIcon={<SaveIcon />}
+          variant="contained"
+          sx={{ color: "#fff" }}
+          size="large"
+          fullWidth
+        >
+          {t("add_course.save_changes")}
+        </Button>
+        <MDButton startIcon={<PublishIcon />} color="primary" size="large" fullWidth>
+          {t("add_course.publish_changes")}
+        </MDButton>
+      </Stack>
     </MDBox>
   );
 };

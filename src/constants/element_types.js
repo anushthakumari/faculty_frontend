@@ -8,6 +8,7 @@ const element_types = {
   model: "model",
   image: "image",
   index: "index",
+  quiz: "quiz",
 };
 
 export default element_types;

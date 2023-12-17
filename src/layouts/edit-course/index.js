@@ -13,6 +13,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ControlPanel from "layouts/edit-course/control-panel";
 import ModuleBuilder from "layouts/edit-course/module-builder";
 import ModuleBuilderStateProvier from "./ModuleBuilderState.provider";
+import MDButton from "components/MDButton";
 
 //page components
 const CARD_PADDDING = "10px";
@@ -27,9 +28,12 @@ function CreateCourse() {
     <DashboardLayout>
       <DashboardNavbar absolute isMini />
       <MDBox>
-        <MDTypography variant="h4" textTransform="capitalize" mb={3}>
-          {courseData.title ? courseData.title : t("add_course.create_a_course")}
-        </MDTypography>
+        <MDBox display="flex" justifyContent="space-between" alignItems="center">
+          <MDTypography variant="h4" textTransform="capitalize" mb={3}>
+            {courseData.title ? courseData.title : t("add_course.create_a_course")}
+          </MDTypography>
+          <MDButton color="secondary">{t("add_course.watch_preview")}</MDButton>
+        </MDBox>
         <MDBox mb={3}>
           <Grid position={"relative"} container spacing={3}>
             <Grid item xs={12} md={9}>

@@ -53,6 +53,7 @@
             "add_doc": "Document",
             "add_description": "Description",
             "add_d_model": "3d Model",
+            "add_quiz": "Quiz",
             "control_panel": "Control Panel",
             "image": "image"
         },
@@ -64,6 +65,17 @@
         "choose_file_from_system": "Choose File From System",
         "no_files_found": "No Files Found",
         "search_file_from_free_resourse": "Search Files From Free Resource",
-        "select_file": "Select File"
+        "select_file": "Select File",
+        "publish_changes": "Publish Changes",
+        "save_changes": "Save Changes",
+        "watch_preview": "Watch Preview",
+        "watch_how_to_create_course": "Watch this video to know how to create a personaised course",
+        "how_a_course_name": "How a course name should be?",
+        "clear_and_concise": "Clear & concise:",
+        "benefit_focused": "Benefit-focused:",
+        "engaging_and_sticky": "Engaging & sticky:",
+        "know_ad": "Know your audience, avoid jargon, say what it is.",
+        "what_they_get": "What they get, not just what they learn.",
+        "catch_their_eye": "Catch their eye, make it stick in their mind."
     }
 }

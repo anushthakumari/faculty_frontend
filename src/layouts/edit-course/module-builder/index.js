@@ -5,9 +5,12 @@ import MDBox from "components/MDBox";
 
 import Stack from "@mui/material/Stack";
 
-import { useModuleBuilderState } from "../ModuleBuilderState.provider";
+import AddIcon from "@mui/icons-material/Add";
+
 import ChapterSection from "./ChapterSection";
 import MDButton from "components/MDButton";
+
+import { useModuleBuilderState } from "../ModuleBuilderState.provider";
 
 const ModuleBuilder = () => {
   const { t } = useTranslation();
@@ -19,7 +22,7 @@ const ModuleBuilder = () => {
         {data.map((v, i) => (
           <ChapterSection key={i} chapterIndex={i} />
         ))}
-        <MDButton color="primary" size="large" onClick={addChapter}>
+        <MDButton startIcon={<AddIcon />} color="secondary" size="large" onClick={addChapter}>
           {t("add_course.add_chapter")}
         </MDButton>
       </Stack>
