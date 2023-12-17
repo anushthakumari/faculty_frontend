@@ -5,6 +5,7 @@ import Profile from "layouts/profile";
 import Webinar from "layouts/webinar";
 import CreateCourse from "layouts/create-course";
 import EditCourse from "layouts/edit-course";
+import FreeResources from "layouts/free-resources";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -101,7 +102,7 @@ const routes = [
       </Icon>
     ),
     route: "/free_resources",
-    component: <Profile />,
+    component: <FreeResources />,
   },
   {
     type: "collapse",

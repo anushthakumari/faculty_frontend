@@ -8,6 +8,7 @@ const upload_res = async (
   files = [],
   element_type = "",
   title = "",
+  desc = "",
   user_id = null,
   user_name = null,
   is_private = true
@@ -28,6 +29,10 @@ const upload_res = async (
 
   if (title) {
     formData.append("title", title);
+  }
+
+  if (desc) {
+    formData.append("desc", desc);
   }
 
   const { data } = await axios.post("/upload", formData, {

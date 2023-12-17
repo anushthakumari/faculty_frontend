@@ -7,7 +7,7 @@ const Image = ({ file_url }) => {
       sx={{
         width: "100%",
         height: "auto",
-        maxHeight: "300px",
+        height: "300px",
         overflow: "hidden",
       }}
     >
@@ -15,7 +15,7 @@ const Image = ({ file_url }) => {
         src={file_url}
         style={{
           width: "100%",
-          height: "auto",
+          height: "100%",
           objectFit: "contain",
         }}
       />
