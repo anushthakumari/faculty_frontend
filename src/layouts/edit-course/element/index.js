@@ -40,7 +40,9 @@ const Index = ({ type, ...rest }) => {
       resourcesAPIs
         .delete_res(rest.asset_id)
         .then()
-        .catch(() => {});
+        .catch(() => {
+          console.log("cannot delete assest!", e);
+        });
     }
   };
 
