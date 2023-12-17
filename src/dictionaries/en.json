@@ -8,7 +8,11 @@
         "save": "save",
         "loading": "loading...",
         "close": "Close",
-        "submit": "Submit"
+        "submit": "Submit",
+        "post": "Post",
+        "caption": "caption",
+        "type": "Type",
+        "upload_file": "Upload File"
     },
     "sidenav": {
         "dashboard": "Dashboard",
@@ -43,6 +47,10 @@
         "close_your_camera": "Close Your Camera",
         "open_your_camera": "Open Your Camera",
         "leave_webinar": "Leave Webinar"
+    },
+    "community": {
+        "page_title": "Community",
+        "post_something": "Post Something That You Like To Share To Everyone"
     },
     "add_course": {
         "create_a_course": "Create A Course",

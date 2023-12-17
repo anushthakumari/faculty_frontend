@@ -14,6 +14,7 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import PeopleIcon from "@mui/icons-material/People";
 import InterestsIcon from "@mui/icons-material/Interests";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import Community from "layouts/community";
 
 const routes = [
   {
@@ -79,7 +80,7 @@ const routes = [
       </Icon>
     ),
     route: "/community",
-    component: <Profile />,
+    component: <Community />,
   },
   {
     type: "collapse",
