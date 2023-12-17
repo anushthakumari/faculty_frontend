@@ -7,7 +7,8 @@
         "remove": "Remove",
         "save": "save",
         "loading": "loading...",
-        "close": "Close"
+        "close": "Close",
+        "submit": "Submit"
     },
     "sidenav": {
         "dashboard": "Dashboard",
@@ -89,6 +90,32 @@
             "li_2": "Get your valuable educational materials to teachers, gain recognition, and build your credit score.",
             "li_3": "Contribute knowledge, earn recognition, and help teachers build awesome lessons!",
             "li_4": "Discover amazing resources, enhance lessons, and earn credits for future uploads and features!"
+        }
+    },
+    "help_desk": {
+        "faqs": {
+            "que1": "What is this app for?",
+            "ans_1": "This app is designed to help teachers collaborate, create high-quality courses, and access free educational resources. It offers a drag-and-drop course builder and a credits system for rewards.",
+            "que_2": "Who can I collaborate with on a course?",
+            "ans_2": "You can collaborate with other teachers, educators, and even subject matter experts by inviting them to your shared workspace. This allows you to work together on course content, providing diverse perspectives and enriching learning materials.",
+            "que_3": "What tools are available for collaboration?",
+            "ans_3": "The app provides real-time co-editing, comments, chat, and version control. You can even track changes made by each collaborator and revert to previous versions as needed, ensuring smooth and transparent teamwork.",
+            "que_4": "How can I customize my courses?",
+            "ans_4": "The app offers a flexible drag-and-drop builder that allows you to arrange, organize, and personalize your course content. You can add different media formats, customize layouts, and create interactive elements to tailor your courses to specific learning styles and preferences.",
+            "que_5": "What types of free resources are available?",
+            "ans_5": "The app curates a vast library of free resources ranging from lesson plans and activities to templates, multimedia files, and even assessment tools. These resources are categorized by subject, grade level, and topic, making it easy to find relevant materials to supplement your courses.",
+            "que_6": "How can I discover new resources?",
+            "ans_6": "The app features a powerful search engine and intuitive browse options that allow you to quickly find relevant resources. You can also explore curated collections, view community-recommended materials, and even submit your own resource requests for specific topics.",
+            "que_7": "How do I earn credits?",
+            "ans_7": "You can earn credits by actively contributing to the app and community. This includes uploading your own resources, participating in discussions, providing feedback, and completing learning modules. The more you engage, the more credits you accumulate.",
+            "que_8": "What can I use my credits for?",
+            "ans_8": "Credits unlock exciting benefits! You can use them to access premium features like increased storage space, custom branding for your courses, early access to new tools, and even premium content bundles. Additionally, credits can boost your visibility in the community, attracting more learners and collaborators."
+        },
+        "form": {
+            "submit_message": "Your query has been submitted! We will get back to you as soon as possible with helpful information.",
+            "did_not_find": "Did not find what you were looking for?",
+            "did_not_find_1": "We are constantly working to improve our resources. Let us know what you were to hoping find, and we will do our best to help!",
+            "tell_us": "Tell us what you need"
         }
     }
 }

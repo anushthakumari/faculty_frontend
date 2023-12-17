@@ -6,6 +6,7 @@ import Webinar from "layouts/webinar";
 import CreateCourse from "layouts/create-course";
 import EditCourse from "layouts/edit-course";
 import FreeResources from "layouts/free-resources";
+import HelpDesk from "layouts/help-desk";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -114,7 +115,7 @@ const routes = [
       </Icon>
     ),
     route: "/help_desk",
-    component: <Profile />,
+    component: <HelpDesk />,
   },
   // {
   //   type: "collapse",
