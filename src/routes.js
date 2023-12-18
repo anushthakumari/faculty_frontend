@@ -8,6 +8,7 @@ import FreeResources from "layouts/free-resources";
 import HelpDesk from "layouts/help-desk";
 import CourseComments from "layouts/course-comments";
 import Earn from "layouts/earn";
+import Community from "layouts/community";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -15,7 +16,7 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import PeopleIcon from "@mui/icons-material/People";
 import InterestsIcon from "@mui/icons-material/Interests";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
-import Community from "layouts/community";
+import VideoCallIcon from "@mui/icons-material/VideoCall";
 
 const routes = [
   {
@@ -30,7 +31,7 @@ const routes = [
     type: "collapse",
     name: "Analytics",
     key: "analytics",
-    icon: <Icon fontSize="small">dashboard</Icon>,
+    icon: <Icon fontSize="small">leaderboard</Icon>,
     route: "/analytics",
     component: <Analytics />,
   },
@@ -106,7 +107,7 @@ const routes = [
     key: "webinar",
     icon: (
       <Icon fontSize="small">
-        <PeopleIcon />
+        <VideoCallIcon />
       </Icon>
     ),
     route: "/webinar",
