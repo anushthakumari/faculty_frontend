@@ -13,11 +13,8 @@ import Header from "layouts/help-desk/components/Header";
 import HelpForm from "./components/HelpForm";
 
 function Overview() {
-  const { t, i18n } = useTranslation();
-
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <MDBox mb={2} />
       <Header>
         <MDBox mt={5} mb={3}>

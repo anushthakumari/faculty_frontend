@@ -23,7 +23,11 @@
         "badge": "Badge",
         "summary": "Summary",
         "view_analytics_here": "View Analytics Here",
-        "view_course": "view Course"
+        "view_course": "view Course",
+        "just_updated": "just updated",
+        "courses": "Courses",
+        "resources": "Resources",
+        "student_eng": "Student Engagement"
     },
     "sidenav": {
         "dashboard": "Dashboard",
@@ -58,6 +62,12 @@
         "published_courses": "Published Courses",
         "your_posted_free_resource": "Your Posted Free Resource",
         "a_human_heart_anatomy": "A Human Heart Anatomy"
+    },
+    "analytics": {
+        "days_analytics": "Days Analytics",
+        "eng_rate": "engagement rate",
+        "than_last_month": "than last month",
+        "than_yesterday": "than yesterday"
     },
     "courses": {
         "page_title": "Your Courses",

@@ -1,7 +1,5 @@
 import Dashboard from "layouts/dash";
-import Tables from "layouts/tables";
-import Notifications from "layouts/notifications";
-import Profile from "layouts/profile";
+import Analytics from "layouts/analytics";
 import Webinar from "layouts/webinar";
 import CreateCourse from "layouts/create-course";
 import EditCourse from "layouts/edit-course";
@@ -27,6 +25,14 @@ const routes = [
     icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/dashboard",
     component: <Dashboard />,
+  },
+  {
+    type: "collapse",
+    name: "Analytics",
+    key: "analytics",
+    icon: <Icon fontSize="small">dashboard</Icon>,
+    route: "/analytics",
+    component: <Analytics />,
   },
   {
     type: "collapse",
