@@ -66,7 +66,7 @@ function BestCourse() {
           <Grid mt={1} container spacing={2} justifyContent="space-between">
             <Grid xs={6} md={6} item>
               <MDTypography variant="body2" fontWeight="bold">
-                {t("dashborad.rating")}
+                {t("dashboard.rating")}
               </MDTypography>
             </Grid>
             <Grid xs={6} md={6} item>

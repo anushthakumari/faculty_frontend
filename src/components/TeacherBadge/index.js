@@ -30,12 +30,13 @@ const TeacherBadge = ({ teacherLevel }) => {
         borderRadius: "8px",
         textTransform: "capitalize",
         color: "#fff",
-        fontWeight: "bold",
       }}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       overlap="circular"
     >
-      <Typography variant="caption">{t("badges." + badgeText)}</Typography>
+      <Typography fontWeight={"bold"} fontSize={"20px"} variant="caption">
+        {t("badges." + badgeText)}
+      </Typography>
     </Badge>
   );
 };

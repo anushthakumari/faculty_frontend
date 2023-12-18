@@ -9,6 +9,7 @@ import Courses from "layouts/courses";
 import FreeResources from "layouts/free-resources";
 import HelpDesk from "layouts/help-desk";
 import CourseComments from "layouts/course-comments";
+import Earn from "layouts/earn";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -79,7 +80,7 @@ const routes = [
       </Icon>
     ),
     route: "/earn",
-    component: <Notifications />,
+    component: <Earn />,
   },
   {
     type: "collapse",

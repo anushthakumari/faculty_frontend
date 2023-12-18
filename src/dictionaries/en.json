@@ -64,6 +64,33 @@
         "edit_course": "Edit Course",
         "view_comments": "View Comments"
     },
+    "earn": {
+        "your_redeemed_transactions": "Your Redeemed Transactions",
+        "redeem_points": "Redeem Points",
+        "overall_credit": "Overall Credits",
+        "info_title": "Learn More",
+        "how_badges_work": "How Does Badges Work?",
+        "badge_desc": {
+            "acharya": {
+                "points": 2500,
+                "description": "Acharya is your first badge! It shows you're dedicated to teaching and making a positive impact.",
+                "requirements": "Reach 2500 credit points.",
+                "benefits": "Access special resources, mentoring, and stand out among your peers."
+            },
+            "upadhyaya": {
+                "points": 5000,
+                "description": "Upadhyaya is the next level! It means you're experienced and committed to excellence.",
+                "requirements": "Reach 5000 credit points.",
+                "benefits": "Enjoy more influence, advanced professional development, and mentorship opportunities."
+            },
+            "acharyottama": {
+                "points": 10000,
+                "description": "Acharyottama is the top badge! It recognizes your outstanding commitment to our community's growth.",
+                "requirements": "Reach 10000 credit points.",
+                "benefits": "Get the highest recognition, personalized development, and a say in important decisions."
+            }
+        }
+    },
     "course_comments": {
         "page_title": "Course Comments"
     },
