@@ -6,12 +6,14 @@ import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MasterCard from "examples/Cards/MasterCard";
-import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
 //page components
 import BestCourse from "layouts/dash/BestCourse";
-import Transactions from "layouts/billing/components/Transactions";
+import CreditDetails from "layouts/dash/credit-details";
+import Suggestions from "./Suggestions";
+import CourseList from "./CourseList";
+import ResourcesList from "./resources-list/";
+import News from "./news";
 
 function Billing() {
   return (
@@ -20,14 +22,23 @@ function Billing() {
       <MDBox mt={8}>
         <MDBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={5}>
+            <Grid item xs={12} md={4}>
               <BestCourse />
+              <MDBox mt={2}>
+                <CourseList />
+              </MDBox>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Transactions />
+              <CreditDetails />
+              <MDBox mt={2}>
+                <ResourcesList />
+              </MDBox>
             </Grid>
-            <Grid item xs={12} md={3}>
-              <Transactions />
+            <Grid item xs={12} md={4}>
+              <Suggestions />
+              <MDBox mt={2}>
+                <News />
+              </MDBox>
             </Grid>
           </Grid>
         </MDBox>

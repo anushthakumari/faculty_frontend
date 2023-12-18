@@ -1,6 +1,12 @@
 {
     "greet": "Hii",
     "logout": "Log Out",
+    "badges": {
+        "acharya": "Acharya",
+        "upadhyaya": "Upadhyaya",
+        "acharyapati": "Acharyapati",
+        "acharyottama": "Acharyottama"
+    },
     "commons": {
         "or": "or",
         "cancel": "cancel",
@@ -12,7 +18,12 @@
         "post": "Post",
         "caption": "caption",
         "type": "Type",
-        "upload_file": "Upload File"
+        "upload_file": "Upload File",
+        "credit_points": "Credit Points",
+        "badge": "Badge",
+        "summary": "Summary",
+        "view_analytics_here": "View Analytics Here",
+        "view_course": "view Course"
     },
     "sidenav": {
         "dashboard": "Dashboard",
@@ -30,7 +41,23 @@
         "best_course_title": "Pythagoras Theorem",
         "best_course_desc": "Unlock the secrets of right triangles and conquer the Pythagorean Theorem!",
         "views": "Views",
-        "student_enrolled": "Student Enrolled"
+        "student_enrolled": "Student Enrolled",
+        "your_credit_details": "Your Credit Details",
+        "analytics": "Analytics",
+        "suggestion_title": "Suggestions For You",
+        "news_title": "News",
+        "quizes": "Quizes",
+        "sugg_li_1": "Add Quizes To Create Student Engagements",
+        "use_resources": "Use Resource",
+        "sugg_li_2": "Use Free Resources to make your course interesting and engaging",
+        "total_stu_enrolled": "Total Student Enrolled",
+        "avg_engagement": "Avg Engagement",
+        "avg_rating": "Avg Rating",
+        "engagement": "Engagement",
+        "rating": "Rating",
+        "published_courses": "Published Courses",
+        "your_posted_free_resource": "Your Posted Free Resource",
+        "a_human_heart_anatomy": "A Human Heart Anatomy"
     },
     "courses": {
         "page_title": "Your Courses",
