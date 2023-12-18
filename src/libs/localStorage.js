@@ -83,6 +83,18 @@ const saveComment = (data = {}) => {
   secureLocalStorage.setItem(storage_keys.COMMENTS, comments);
 };
 
+const getLanguageCode = () => {
+  const langCode = secureLocalStorage.getItem(storage_keys.LANG_CODE);
+
+  return langCode ? langCode : "en";
+};
+
+const setLanguageCode = (code = "en") => {
+  const langCode = secureLocalStorage.setItem(storage_keys.LANG_CODE, code);
+
+  return langCode ? langCode : "en";
+};
+
 const localStorage = {
   setUser,
   unsetUser,
@@ -91,6 +103,8 @@ const localStorage = {
   savePost,
   getComments,
   saveComment,
+  getLanguageCode,
+  setLanguageCode,
 };
 
 export default localStorage;

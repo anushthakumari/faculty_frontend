@@ -1,17 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 // react-router-dom components
 import { useLocation, NavLink } from "react-router-dom";
-
-// prop-types is a library for typechecking of props.
-import PropTypes from "prop-types";
 
 // @mui material components
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -32,6 +30,9 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
 } from "context";
+
+import languages from "constants/languages";
+import localStorage from "libs/localStorage";
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const [controller, dispatch] = useMaterialUIController();
@@ -187,7 +188,17 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
         }
       />
       <List>{renderRoutes}</List>
-      <MDBox p={2} mt="auto">
+      <MDBox
+        p={2}
+        mt="auto"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        gap={2}
+      >
+        <IndianLanguagesSelect />
+
         <MDButton
           component="a"
           href="https://www.creative-tim.com/product/material-dashboard-pro-react"
@@ -204,18 +215,37 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   );
 }
 
-// Setting default values for the props of Sidenav
-Sidenav.defaultProps = {
-  color: "info",
-  brand: "",
-};
+const IndianLanguagesSelect = () => {
+  const selectedLanguage = localStorage.getLanguageCode();
 
-// Typechecking props for the Sidenav
-Sidenav.propTypes = {
-  color: PropTypes.oneOf(["primary", "secondary", "info", "success", "warning", "error", "dark"]),
-  brand: PropTypes.string,
-  brandName: PropTypes.string.isRequired,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  const handleChange = (event) => {
+    const val = event.target.value;
+    localStorage.setLanguageCode(val);
+    window.location.reload();
+  };
+
+  return (
+    <FormControl
+      sx={{
+        height: "50px",
+        color: "white",
+      }}
+      fullWidth
+    >
+      <Select
+        labelId="indian-language-label"
+        style={{ height: "100%", backgroundColor: "white" }}
+        value={selectedLanguage}
+        onChange={handleChange}
+      >
+        {languages.map((language) => (
+          <MenuItem key={language.code} value={language.code}>
+            {language.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
 };
 
 export default Sidenav;
