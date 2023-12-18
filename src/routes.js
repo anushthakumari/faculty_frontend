@@ -9,6 +9,7 @@ import HelpDesk from "layouts/help-desk";
 import CourseComments from "layouts/course-comments";
 import Earn from "layouts/earn";
 import Community from "layouts/community";
+import RateCourses from "layouts/rate-courses";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -17,6 +18,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import InterestsIcon from "@mui/icons-material/Interests";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
+import GradeIcon from "@mui/icons-material/Grade";
 
 const routes = [
   {
@@ -124,6 +126,18 @@ const routes = [
     ),
     route: "/free_resources",
     component: <FreeResources />,
+  },
+  {
+    type: "collapse",
+    name: "Rate Courses",
+    key: "rate_courses",
+    icon: (
+      <Icon fontSize="small">
+        <GradeIcon />
+      </Icon>
+    ),
+    route: "/rate_courses",
+    component: <RateCourses />,
   },
   {
     type: "collapse",

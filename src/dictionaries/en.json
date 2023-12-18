@@ -38,7 +38,8 @@
         "community": "Community",
         "webinar": "Webinar",
         "free_resources": "Free Resources",
-        "help_desk": "Help Desk"
+        "help_desk": "Help Desk",
+        "rate_courses": "Rate Courses"
     },
     "dashboard": {
         "best_course_heading": "Your Best Performing Course",
@@ -187,6 +188,11 @@
         },
         "driver_title": "Free Resources!",
         "driver_description": "Use free resources like image, audio, video and 3D models to create an interacrtive course for your students"
+    },
+    "rate_courses": {
+        "page_title": "Rate Courses Created By Others",
+        "driver_title": "Rate Other Courses",
+        "driver_description": "Rate other teacher courses and earn credit points!"
     },
     "help_desk": {
         "faqs": {

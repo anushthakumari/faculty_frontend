@@ -68,12 +68,20 @@ const driver_config = {
         align: "start",
       },
     },
-
     {
       element: "#side_nav_free_resources",
       popover: {
         title: t("free_resources.driver_title"),
         description: t("free_resources.driver_description"),
+        side: "left",
+        align: "start",
+      },
+    },
+    {
+      element: "#side_nav_rate_courses",
+      popover: {
+        title: t("rate_courses.driver_title"),
+        description: t("rate_courses.driver_description"),
         side: "left",
         align: "start",
       },

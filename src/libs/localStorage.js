@@ -1,6 +1,23 @@
 import secureLocalStorage from "react-secure-storage";
 import storage_keys from "constants/storage_keys";
 
+const default_courses = [
+  {
+    id: 1,
+    title: "Modular Suspension",
+    createdAt: new Date().toISOString(),
+    status: "published",
+    comment_count: 2,
+  },
+  {
+    id: 2,
+    title: "Human Heart Anatomy",
+    createdAt: new Date().toISOString(),
+    status: "published",
+    comment_count: 2,
+  },
+];
+
 const setUser = (data = {}) => {
   secureLocalStorage.setItem(storage_keys.USER, data);
 };
@@ -107,6 +124,22 @@ const setOnboardState = (bool = true) => {
   secureLocalStorage.removeItem(storage_keys.ONBOARD);
 };
 
+const getCourses = () => {
+  const courses = secureLocalStorage.getItem(storage_keys.COURSES);
+
+  if (courses) {
+    return courses;
+  }
+
+  return default_courses;
+};
+
+const setCourses = (data = {}) => {
+  const saved_courses = getCourses();
+
+  secureLocalStorage.setItem(storage_keys.COURSES, [...saved_courses, data]);
+};
+
 const localStorage = {
   setUser,
   unsetUser,
@@ -119,6 +152,8 @@ const localStorage = {
   setLanguageCode,
   getOnboardState,
   setOnboardState,
+  getCourses,
+  setCourses,
 };
 
 export default localStorage;
