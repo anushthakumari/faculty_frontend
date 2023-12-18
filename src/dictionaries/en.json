@@ -61,18 +61,24 @@
         "rating": "Rating",
         "published_courses": "Published Courses",
         "your_posted_free_resource": "Your Posted Free Resource",
-        "a_human_heart_anatomy": "A Human Heart Anatomy"
+        "a_human_heart_anatomy": "A Human Heart Anatomy",
+        "driver_title": "Main Dashboard",
+        "driver_description": "Dive into your course library, see key metrics like completion rates and user engagement, and discover new learning opportunities."
     },
     "analytics": {
         "days_analytics": "Days Analytics",
         "eng_rate": "engagement rate",
         "than_last_month": "than last month",
-        "than_yesterday": "than yesterday"
+        "than_yesterday": "than yesterday",
+        "driver_title": "The Analytics",
+        "driver_description": "Track key metrics like course enrollments, video views, completion rates, and student reviews. Compare your performance to similar courses and industry benchmarks"
     },
     "courses": {
         "page_title": "Your Courses",
         "edit_course": "Edit Course",
-        "view_comments": "View Comments"
+        "view_comments": "View Comments",
+        "driver_title": "Your Courses",
+        "driver_description": "All The courses created by you will be displayed here"
     },
     "earn": {
         "your_redeemed_transactions": "Your Redeemed Transactions",
@@ -99,7 +105,9 @@
                 "requirements": "Reach 10000 credit points.",
                 "benefits": "Get the highest recognition, personalized development, and a say in important decisions."
             }
-        }
+        },
+        "driver_title": "Earn Money!",
+        "driver_description": "Credits earned by you will be dispalyed here and you can redeem it."
     },
     "course_comments": {
         "page_title": "Course Comments"
@@ -118,11 +126,15 @@
         "unmute_your_mic": "Unmute Your Mic",
         "close_your_camera": "Close Your Camera",
         "open_your_camera": "Open Your Camera",
-        "leave_webinar": "Leave Webinar"
+        "leave_webinar": "Leave Webinar",
+        "driver_title": "Host A Webinar",
+        "driver_description": "Host a webinar, or join a webinar to collaborate with other teachers."
     },
     "community": {
         "page_title": "Community",
-        "post_something": "Post Something That You Like To Share To Everyone"
+        "post_something": "Post Something That You Like To Share To Everyone",
+        "driver_title": "Community Support!",
+        "driver_description": "Talk to the teacher community, share and gain ideas."
     },
     "add_course": {
         "create_a_course": "Create A Course",
@@ -158,7 +170,9 @@
         "engaging_and_sticky": "Engaging & sticky:",
         "know_ad": "Know your audience, avoid jargon, say what it is.",
         "what_they_get": "What they get, not just what they learn.",
-        "catch_their_eye": "Catch their eye, make it stick in their mind."
+        "catch_their_eye": "Catch their eye, make it stick in their mind.",
+        "driver_title": "Create Your Own Course",
+        "driver_description": "Here you can create your own personalised course to showcase your creativity."
     },
     "free_resources": {
         "page_title": "Free Resources",
@@ -170,7 +184,9 @@
             "li_2": "Get your valuable educational materials to teachers, gain recognition, and build your credit score.",
             "li_3": "Contribute knowledge, earn recognition, and help teachers build awesome lessons!",
             "li_4": "Discover amazing resources, enhance lessons, and earn credits for future uploads and features!"
-        }
+        },
+        "driver_title": "Free Resources!",
+        "driver_description": "Use free resources like image, audio, video and 3D models to create an interacrtive course for your students"
     },
     "help_desk": {
         "faqs": {
@@ -196,6 +212,8 @@
             "did_not_find": "Did not find what you were looking for?",
             "did_not_find_1": "We are constantly working to improve our resources. Let us know what you were to hoping find, and we will do our best to help!",
             "tell_us": "Tell us what you need"
-        }
+        },
+        "driver_title": "Get Help!!",
+        "driver_description": "If you get stuck we are here to help. Get support from us here"
     }
 }

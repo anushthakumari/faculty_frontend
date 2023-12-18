@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { driver } from "driver.js";
 
 // react-router-dom components
 import { useLocation, NavLink } from "react-router-dom";
@@ -33,6 +34,10 @@ import {
 
 import languages from "constants/languages";
 import localStorage from "libs/localStorage";
+
+import driver_config from "configs/driver.config";
+
+import "driver.js/dist/driver.css";
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const [controller, dispatch] = useMaterialUIController();
@@ -112,7 +117,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             />
           </Link>
         ) : (
-          <NavLink key={key} to={route}>
+          <NavLink key={key} id={"side_nav_" + key} to={route}>
             <SidenavCollapse name={name} icon={icon} active={key === collapseName} />
           </NavLink>
         );
@@ -148,6 +153,16 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       return returnValue;
     }
   );
+
+  useEffect(() => {
+    const is_alredy_onboarded = localStorage.getOnboardState();
+
+    if (!is_alredy_onboarded) {
+      const driverObj = driver(driver_config);
+      driverObj.drive();
+      localStorage.setOnboardState(true);
+    }
+  }, []);
 
   return (
     <SidenavRoot

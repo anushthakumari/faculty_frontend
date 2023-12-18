@@ -95,6 +95,18 @@ const setLanguageCode = (code = "en") => {
   return langCode ? langCode : "en";
 };
 
+const getOnboardState = () => secureLocalStorage.getItem(storage_keys.ONBOARD);
+const setOnboardState = (bool = true) => {
+  const is_done = Boolean(bool);
+
+  if (is_done) {
+    secureLocalStorage.setItem(storage_keys.ONBOARD, "true");
+    return;
+  }
+
+  secureLocalStorage.removeItem(storage_keys.ONBOARD);
+};
+
 const localStorage = {
   setUser,
   unsetUser,
@@ -105,6 +117,8 @@ const localStorage = {
   saveComment,
   getLanguageCode,
   setLanguageCode,
+  getOnboardState,
+  setOnboardState,
 };
 
 export default localStorage;

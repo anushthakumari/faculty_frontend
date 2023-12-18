@@ -3,6 +3,7 @@ const storage_keys = {
   POSTS: "@guru_mantra::user_posts",
   COMMENTS: "@guru_mantra::user_comments",
   LANG_CODE: "@guru_mantra::lang_code",
+  ONBOARD: "@guru_mantra::onboard_state",
 };
 
 export default storage_keys;
