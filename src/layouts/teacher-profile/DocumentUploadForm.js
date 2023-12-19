@@ -24,13 +24,16 @@ import api_urls from "constants/api_urls";
 function DocumentUploadForm() {
   const localUserData = localStorage.getUser();
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [aadharCardFile, setAadharCardFile] = useState(null);
+  const [markSheetFile, setMarkSheetFile] = useState(null);
+  const [certFile, setcertFile] = useState(null);
+
   const [isLoading, setisLoading] = useState(false);
   const [userData, setuserData] = useState(localUserData);
-  const [previouslyUploadedDocumentUrl, setPreviouslyUploadedDocumentUrl] = useState(null);
 
-  const handleFileUpload = (event) => {
-    setSelectedFile(event.target.files[0]);
+  const handleFileUpload = (event, setFileState) => {
+    const file = event.target.files[0];
+    setFileState(file);
   };
 
   const handleSubmit = async (event) => {
@@ -38,18 +41,26 @@ function DocumentUploadForm() {
 
     try {
       setisLoading(true);
-      const file_url = await helperApis.upload_file(selectedFile);
 
-      const d = { user_id: userData.user_id, doc_url: file_url };
+      const aadharCardUrl = aadharCardFile && (await helperApis.upload_file(aadharCardFile));
+      const markSheetUrl = markSheetFile && (await helperApis.upload_file(markSheetFile));
+      const certUrl = markSheetFile && (await helperApis.upload_file(certFile));
 
-      const { data } = await axios.put(api_urls.LMS_USERS_BASE_URL + "edit", d);
-      const newD = { user_id: data._id, user_name: data.username, ...data };
-      localStorage.setUser(newD);
-      setuserData(newD);
-      toast.success("saved successfully!");
+      const updatedUserData = {
+        user_id: userData.user_id,
+        aadhar_card_url: aadharCardUrl || userData.aadhar_card_url,
+        mark_sheet_url: markSheetUrl || userData.mark_sheet_url,
+        cert_url: certUrl || userData.cert_url,
+      };
+
+      const { data } = await axios.put(api_urls.LMS_USERS_BASE_URL + "edit", updatedUserData);
+      const newUserData = { user_id: data._id, user_name: data.username, ...data };
+      localStorage.setUser(newUserData);
+      setuserData(newUserData);
+      toast.success("Documents uploaded successfully!, you will be verified soon! ");
     } catch (error) {
-      console.log(error);
-      toast.error("something went wrong!");
+      console.error(error);
+      toast.error("Something went wrong!");
     } finally {
       setisLoading(false);
     }
@@ -57,39 +68,102 @@ function DocumentUploadForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h5" align="center">
-            Upload Document
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <InputLabel id="document-file-label">Document</InputLabel>
-          <input id="document-file" type="file" accept="image/*" onChange={handleFileUpload} />
-          {selectedFile && (
-            <Tooltip title="Remove uploaded file">
-              <IconButton aria-label="remove uploaded file" onClick={() => setSelectedFile(null)}>
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
-          )}
-        </Grid>
-        <Grid item xs={12}>
-          {userData.doc_url ? <img src={userData.doc_url} width={100} height={100} /> : null}
-        </Grid>
-        <Grid item xs={12}>
-          <Button
-            sx={{ color: "#fff" }}
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            disabled={isLoading}
-          >
-            {isLoading ? "Loading..." : "Upload"}
-          </Button>
-        </Grid>
+      <Typography>Documents Supporting Your Education</Typography>
+
+      <Grid item xs={12} mt={3}>
+        <InputLabel id="aadhar-card-file-label">Aadhar Card</InputLabel>
+        <input
+          id="aadhar-card-file"
+          type="file"
+          accept="image/*"
+          onChange={(event) => handleFileUpload(event, setAadharCardFile)}
+        />
+        {aadharCardFile && (
+          <Tooltip title="Remove uploaded file">
+            <IconButton aria-label="remove uploaded file" onClick={() => setAadharCardFile(null)}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        )}
       </Grid>
+
+      <Grid item xs={12} mt={3}>
+        <InputLabel id="mark-sheet-file-label">Graduation Mark Sheet</InputLabel>
+        <input
+          id="mark-sheet-file"
+          type="file"
+          accept="image/*"
+          onChange={(event) => handleFileUpload(event, setMarkSheetFile)}
+        />
+        {markSheetFile && (
+          <Tooltip title="Remove uploaded file">
+            <IconButton aria-label="remove uploaded file" onClick={() => setMarkSheetFile(null)}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+      </Grid>
+
+      <Grid item xs={12} my={3}>
+        <InputLabel id="certification-file-label">Any Certification</InputLabel>
+        <input
+          id="certification-file"
+          type="file"
+          accept="image/*"
+          onChange={(event) => handleFileUpload(event, setcertFile)}
+        />
+        {certFile && (
+          <Tooltip title="Remove uploaded file">
+            <IconButton aria-label="remove uploaded file" onClick={() => setcertFile(null)}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Button
+          sx={{ color: "#fff" }}
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "Upload"}
+        </Button>
+      </Grid>
+
+      {userData.aadhar_card_url ? (
+        <Grid mt={2} container>
+          <Grid md={6} item>
+            <Typography>Adhar Card</Typography>
+          </Grid>
+          <Grid md={6} item>
+            <img src={userData.aadhar_card_url} height={100} width={100} />
+          </Grid>
+        </Grid>
+      ) : null}
+      {userData.mark_sheet_url ? (
+        <Grid mt={2} container>
+          <Grid md={6} item>
+            <Typography>Mark Sheet</Typography>
+          </Grid>
+          <Grid md={6} item>
+            <img src={userData.mark_sheet_url} height={100} width={100} />
+          </Grid>
+        </Grid>
+      ) : null}
+      {userData.cert_url ? (
+        <Grid mt={2} container>
+          <Grid md={6} item>
+            <Typography>Certification</Typography>
+          </Grid>
+          <Grid md={6} item>
+            <img src={userData.cert_url} height={100} width={100} />
+          </Grid>
+        </Grid>
+      ) : null}
     </form>
   );
 }

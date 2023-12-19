@@ -10,12 +10,28 @@ function EditUserForm() {
 
   const [name, setName] = useState(userData.user_name);
   const [email, setEmail] = useState(userData.email);
+  const [education, setEducation] = useState(userData.education || "");
+  const [major, setMajor] = useState(userData.major || "");
+  const [graduationYear, setGraduationYear] = useState(userData.graduation_year || "");
   const [isLoading, setisLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const d = { username: name, email, user_id: userData.user_id };
+
+      if (parseInt(graduationYear) > new Date().getFullYear()) {
+        toast.error("invalid graduation year!");
+        return;
+      }
+
+      const d = {
+        username: name,
+        email,
+        education,
+        major,
+        graduation_year: graduationYear,
+        user_id: userData.user_id,
+      };
 
       const { data } = await axios.put(api_urls.LMS_USERS_BASE_URL + "edit", d);
 
@@ -65,6 +81,34 @@ function EditUserForm() {
             required
           />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            label="Education"
+            value={education}
+            onChange={(e) => setEducation(e.target.value)}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            label="Major"
+            value={major}
+            onChange={(e) => setMajor(e.target.value)}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            label="Graduation Year"
+            type="number"
+            value={graduationYear}
+            onChange={(e) => setGraduationYear(e.target.value)}
+            fullWidth
+            required
+          />
+        </Grid>
         <Grid item xs={12}>
           <Button
             type="submit"
@@ -72,6 +116,7 @@ function EditUserForm() {
             variant="contained"
             color="primary"
             fullWidth
+            required
           >
             {isLoading ? "Loading..." : "Save Changes"}
           </Button>
