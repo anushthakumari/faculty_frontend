@@ -81,7 +81,7 @@ const useCoursesData = (onAction) => {
               color="text"
               fontWeight="medium"
               onClick={() => {
-                onAction?.(v);
+                navigate("/rate_course_details/" + v.id);
               }}
             >
               Rate this course

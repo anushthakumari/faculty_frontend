@@ -10,6 +10,7 @@ import CourseComments from "layouts/course-comments";
 import Earn from "layouts/earn";
 import Community from "layouts/community";
 import RateCourses from "layouts/rate-courses";
+import RateCourseDetails from "layouts/rate-course-details";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -138,6 +139,19 @@ const routes = [
     ),
     route: "/rate_courses",
     component: <RateCourses />,
+  },
+  {
+    type: "collapse",
+    name: "Rate Courses This Course",
+    key: "rate_course_details",
+    icon: (
+      <Icon fontSize="small">
+        <GradeIcon />
+      </Icon>
+    ),
+    route: "/rate_course_details/:id",
+    component: <RateCourseDetails />,
+    hideInSideNav: true,
   },
   {
     type: "collapse",
