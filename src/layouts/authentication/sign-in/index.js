@@ -1,20 +1,6 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState } from "react";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // react-router-dom components
 import { Link } from "react-router-dom";
 
@@ -41,10 +27,46 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
+import api_urls from "constants/api_urls";
+import localStorage from "libs/localStorage";
+import { toast } from "react-toastify";
+
 function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setisLoading(true);
+
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
+
+    axios
+      .post(api_urls.LMS_USERS_BASE_URL + "login", {
+        email,
+        password,
+      })
+      .then(({ data }) => {
+        localStorage.setUser({ user_id: data._id, user_name: data.username });
+        navigate("/dashboard");
+      })
+      .catch((e) => {
+        console.log(e);
+        if (e.response?.data?.message) {
+          toast.error(e.response?.data?.message);
+        } else {
+          toast.error("something went wrong!");
+        }
+      })
+      .finally((e) => {
+        setisLoading(false);
+      });
+  };
 
   return (
     <BasicLayout image={bgImage}>
@@ -63,7 +85,7 @@ function Basic() {
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
             Sign in
           </MDTypography>
-          <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
+          {/* <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
             <Grid item xs={2}>
               <MDTypography component={MuiLink} href="#" variant="body1" color="white">
                 <FacebookIcon color="inherit" />
@@ -79,31 +101,19 @@ function Basic() {
                 <GoogleIcon color="inherit" />
               </MDTypography>
             </Grid>
-          </Grid>
+          </Grid> */}
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
+          <MDBox component="form" onSubmit={handleSubmit} role="form">
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" fullWidth />
+              <MDInput type="email" label="Email" name="email" fullWidth required />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" fullWidth />
-            </MDBox>
-            <MDBox display="flex" alignItems="center" ml={-1}>
-              <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-              <MDTypography
-                variant="button"
-                fontWeight="regular"
-                color="text"
-                onClick={handleSetRememberMe}
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-              >
-                &nbsp;&nbsp;Remember me
-              </MDTypography>
+              <MDInput type="password" label="Password" name="password" fullWidth required />
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
-                sign in
+              <MDButton type="submit" variant="gradient" color="info" disable={isLoading} fullWidth>
+                {isLoading ? "Loading.." : "Sign In"}
               </MDButton>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">

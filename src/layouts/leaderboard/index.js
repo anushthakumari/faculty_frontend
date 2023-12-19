@@ -21,15 +21,16 @@ import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
 import { Card, Typography } from "@mui/material";
 
+import badges from "constants/badges";
+
 function LeaderBoard() {
   const { t } = useTranslation();
   const leaderboardData = [
-    { user: "Teacher1", score: 100 },
-    { user: "Teacher2", score: 90 },
-    { user: "Teacher3", score: 80 },
-    { user: "Teacher4", score: 60 },
-    { user: "Teacher5", score: 40 },
-    // Add more data as needed
+    { user: "Jai Shankar", score: 100, badge: badges.acharyottama },
+    { user: "Rameshwar Singh", score: 90, badge: badges.upadhyaya },
+    { user: "Shiv Desai", score: 80, badge: badges.upadhyaya },
+    { user: "Radhey Sign", score: 60, badge: badges.upadhyaya },
+    { user: "Vishnatham Desai", score: 40, badge: badges.acharya },
   ];
 
   return (
@@ -37,7 +38,6 @@ function LeaderBoard() {
       <DashboardNavbar absolute isMini />
       <MDBox mt={8}>
         <MDBox mb={3}>
-          {/* <Typography>This is leaderboard</Typography> */}
           <Board data={leaderboardData} />
         </MDBox>
       </MDBox>

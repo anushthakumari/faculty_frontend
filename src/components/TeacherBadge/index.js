@@ -11,7 +11,7 @@ const COLOR_SCHEME = {
   acharyottama: "#9B59B6", // Purple
 };
 
-const TeacherBadge = ({ teacherLevel }) => {
+const TeacherBadge = ({ teacherLevel, size = "lg" }) => {
   const badgeText = badges[teacherLevel];
 
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ const TeacherBadge = ({ teacherLevel }) => {
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       overlap="circular"
     >
-      <Typography fontWeight={"bold"} fontSize={"20px"} variant="caption">
+      <Typography fontWeight={"bold"} fontSize={size === "lg" ? "20px" : "10px"} variant="caption">
         {t("badges." + badgeText)}
       </Typography>
     </Badge>

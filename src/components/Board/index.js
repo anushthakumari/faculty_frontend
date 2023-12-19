@@ -7,8 +7,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Icon from "@mui/material/Icon";
 // import makeStyles from "@mui/material/makeStyles";
 import { makeStyles } from "@mui/styles";
+import TeacherBadge from "components/TeacherBadge";
+import MDTypography from "components/MDTypography";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {
@@ -31,6 +35,14 @@ const Leaderboard = ({ data }) => {
 
   return (
     <TableContainer component={Paper} className={classes.tableContainer}>
+      <center>
+        <MDTypography textAlign="center" mt={2}>
+          <Icon>
+            <EmojiEventsIcon />
+          </Icon>
+          Leader Board
+        </MDTypography>
+      </center>
       <Table>
         <TableHead>
           <TableRow>
@@ -42,8 +54,11 @@ const Leaderboard = ({ data }) => {
         <TableBody>
           {data.map((item, index) => (
             <TableRow key={index}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{item.user}</TableCell>
+              <TableCell style={{ width: "10px" }}>{index + 1}</TableCell>
+              <TableCell>
+                <TeacherBadge teacherLevel={item.badge} size="sm" />
+                <MDTypography>{item.user}</MDTypography>
+              </TableCell>
               <TableCell>{item.score}</TableCell>
             </TableRow>
           ))}
