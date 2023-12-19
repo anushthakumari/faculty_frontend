@@ -15,16 +15,11 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 
 // Data
 import reportsBarChartData from "layouts/analytics/data/reportsBarChartData";
-import reportsLineChartData from "layouts/analytics/data/reportsLineChartData";
 import { useTranslation } from "react-i18next";
 import LoadingSpinner from "components/LoadingSpinner";
+import localStorage from "libs/localStorage";
 
-const defaultStats = {
-  course_count: 2,
-  student_count: 2,
-  credit_points: 2500,
-  resourse_count: 2,
-};
+const defaultStats = localStorage.getStats();
 
 function Dashboard() {
   const [isLoading, setisLoading] = useState(false);

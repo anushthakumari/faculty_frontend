@@ -14,6 +14,9 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 import { CardMedia, Divider } from "@mui/material";
+import localStorage from "libs/localStorage";
+
+const defaultStats = localStorage.getStats();
 
 const CARD_PADDDING = "15px";
 
@@ -47,7 +50,7 @@ function BestCourse() {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                200
+                {defaultStats.student_count}
               </MDTypography>
             </Grid>
           </Grid>
@@ -59,7 +62,7 @@ function BestCourse() {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                80%
+                {defaultStats.avg_eng}
               </MDTypography>
             </Grid>
           </Grid>
@@ -71,7 +74,7 @@ function BestCourse() {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                4.0
+                {defaultStats.avg_rating}
               </MDTypography>
             </Grid>
           </Grid>

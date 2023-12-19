@@ -18,6 +18,16 @@ const default_courses = [
   },
 ];
 
+const defaultStats = {
+  course_count: 2,
+  student_count: 2,
+  credit_points: 2500,
+  resourse_count: 2,
+  avg_eng: "80%",
+  avg_rating: 4,
+  badge: "acharya",
+};
+
 const setUser = (data = {}) => {
   secureLocalStorage.setItem(storage_keys.USER, data);
 };
@@ -141,6 +151,12 @@ const setCourses = (data = {}) => {
   secureLocalStorage.setItem(storage_keys.COURSES, [...saved_courses, data]);
 };
 
+const getStats = () => {
+  const savedStats = secureLocalStorage.getItem(storage_keys.STATS);
+
+  return savedStats ? savedStats : defaultStats;
+};
+
 const localStorage = {
   setUser,
   unsetUser,
@@ -155,6 +171,7 @@ const localStorage = {
   setOnboardState,
   getCourses,
   setCourses,
+  getStats,
 };
 
 export default localStorage;

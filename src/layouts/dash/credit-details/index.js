@@ -10,8 +10,11 @@ import MDButton from "components/MDButton";
 
 import TeacherBadge from "components/TeacherBadge";
 import badges from "constants/badges";
+import localStorage from "libs/localStorage";
 
 const CARD_PADDDING = "15px";
+
+const defaultStats = localStorage.getStats();
 
 const CreditDetails = () => {
   const { t } = useTranslation();
@@ -36,7 +39,7 @@ const CreditDetails = () => {
             item
           >
             <MDTypography variant="h6">{t("commons.credit_points")}</MDTypography>
-            <MDTypography variant="h2">2500</MDTypography>
+            <MDTypography variant="h2">{defaultStats.credit_points}</MDTypography>
           </Grid>
           <Grid
             xs={12}
@@ -48,7 +51,7 @@ const CreditDetails = () => {
             item
           >
             <MDTypography variant="h6">{t("commons.badge")}</MDTypography>
-            <TeacherBadge teacherLevel={badges.acharya} />
+            <TeacherBadge teacherLevel={badges[defaultStats.badge]} />
           </Grid>
         </Grid>
         <Divider sx={{ bgcolor: "#000" }} />
@@ -64,7 +67,7 @@ const CreditDetails = () => {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                200
+                {defaultStats.student_count}
               </MDTypography>
             </Grid>
           </Grid>
@@ -76,7 +79,7 @@ const CreditDetails = () => {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                80%
+                {defaultStats.avg_eng}
               </MDTypography>
             </Grid>
           </Grid>
@@ -88,7 +91,7 @@ const CreditDetails = () => {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                4.0
+                {defaultStats.avg_rating}
               </MDTypography>
             </Grid>
           </Grid>

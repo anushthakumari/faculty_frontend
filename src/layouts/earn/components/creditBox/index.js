@@ -8,6 +8,9 @@ import MDTypography from "components/MDTypography";
 import TeacherBadge from "components/TeacherBadge";
 
 import badges from "constants/badges";
+import localStorage from "libs/localStorage";
+
+const defaultStats = localStorage.getStats();
 
 const CreditBox = () => {
   const { t } = useTranslation();
@@ -24,7 +27,7 @@ const CreditBox = () => {
         item
       >
         <MDTypography variant="h6">{t("commons.credit_points")}</MDTypography>
-        <MDTypography variant="h2">2500</MDTypography>
+        <MDTypography variant="h2">{defaultStats.credit_points}</MDTypography>
       </Grid>
       <Grid
         xs={12}
@@ -36,7 +39,7 @@ const CreditBox = () => {
         item
       >
         <MDTypography variant="h6">{t("commons.badge")}</MDTypography>
-        <TeacherBadge teacherLevel={badges.acharya} />
+        <TeacherBadge teacherLevel={badges[defaultStats.badge]} />
       </Grid>
     </Grid>
   );

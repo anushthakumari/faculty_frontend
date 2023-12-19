@@ -5,6 +5,7 @@ const storage_keys = {
   LANG_CODE: "@guru_mantra::lang_code",
   ONBOARD: "@guru_mantra::onboard_state",
   COURSES: "@guru_mantra::courses",
+  STATS: "@guru_mantra::stats",
 };
 
 export default storage_keys;
