@@ -45,7 +45,7 @@ function DocumentUploadForm() {
       const { data } = await axios.put(api_urls.LMS_USERS_BASE_URL + "edit", d);
       const newD = { user_id: data._id, user_name: data.username, ...data };
       localStorage.setUser(newD);
-      setUser(newD);
+      setuserData(newD);
       toast.success("saved successfully!");
     } catch (error) {
       console.log(error);
