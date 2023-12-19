@@ -39,7 +39,8 @@
         "webinar": "Webinar",
         "free_resources": "Free Resources",
         "help_desk": "Help Desk",
-        "rate_courses": "Rate Courses"
+        "rate_courses": "Rate Courses",
+        "leaderboard":"Leaderboard"
     },
     "dashboard": {
         "best_course_heading": "Your Best Performing Course",

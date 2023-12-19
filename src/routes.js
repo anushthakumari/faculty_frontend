@@ -10,6 +10,7 @@ import CourseComments from "layouts/course-comments";
 import Earn from "layouts/earn";
 import Community from "layouts/community";
 import RateCourses from "layouts/rate-courses";
+import LeaderBorard from "layouts/leaderboard";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -90,6 +91,18 @@ const routes = [
     ),
     route: "/earn",
     component: <Earn />,
+  },
+  {
+    type: "collapse",
+    name: "leaderboard",
+    key: "leaderboard",
+    icon: (
+      <Icon fontSize="small">
+        <MonetizationOnIcon />
+      </Icon>
+    ),
+    route: "/leaderborad",
+    component: <LeaderBorard />,
   },
   {
     type: "collapse",
