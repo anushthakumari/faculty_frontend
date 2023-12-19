@@ -19,7 +19,7 @@ function Overview() {
       <MDBox mb={2} />
       <Header>
         <MDBox mt={5} mb={3}>
-          {/* <HelpForm /> */}
+          <HelpForm />
           <GForm />
         </MDBox>
       </Header>

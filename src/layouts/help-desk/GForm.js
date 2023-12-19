@@ -2,8 +2,18 @@
 import React, { useState } from "react";
 import { TextField, Button, Container, Typography, Box, Grid, InputAdornment } from "@mui/material";
 import { HelpOutline as HelpOutlineIcon } from "@mui/icons-material";
+import DateTimePicker from "react-datetime-picker";
+import MDTypography from "components/MDTypography";
+
+import "react-datetime-picker/dist/DateTimePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
+import { toast } from "react-toastify";
 
 const GrievanceForm = ({ user = {} }) => {
+  const [dateTime, setdateTime] = useState();
+  const [isLoading, setisLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: user.name || "",
     email: user.email || "",
@@ -24,9 +34,14 @@ const GrievanceForm = ({ user = {} }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setisLoading(true);
     // You can handle the form submission logic here
     console.log("Form submitted:", formData);
     // Add your logic to handle the form submission, such as sending the data to the server.
+    setTimeout(() => {
+      setisLoading(false);
+      toast.success("Thank You For Instant response!, Our people will be connecting to you.");
+    }, 500);
   };
 
   return (
@@ -36,38 +51,10 @@ const GrievanceForm = ({ user = {} }) => {
           Grievance Form
         </Typography>
         <form onSubmit={handleSubmit}>
+          <MDTypography variant="body2">When did that happen?</MDTypography>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Your Name"
-                name="name"
-                variant="outlined"
-                required
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Your Email"
-                name="email"
-                type="email"
-                variant="outlined"
-                required
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </Grid>
             <Grid item xs={12}>
-              {/* <DateTimePicker
-                renderInput={(props) => (
-                  <TextField {...props} fullWidth label="Date and Time" variant="outlined" />
-                )}
-                value={formData.dateTime}
-                onChange={handleDateTimeChange}
-              /> */}
+              <DateTimePicker onChange={setdateTime} value={dateTime} />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -94,17 +81,6 @@ const GrievanceForm = ({ user = {} }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Helpline Number (for teachers to call)"
-                name="helplineNumber"
-                variant="outlined"
-                required
-                value={formData.helplineNumber}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
               <Typography variant="body2" align="center" color="textSecondary">
                 In case of emergency, call the helpline:
               </Typography>
@@ -112,7 +88,7 @@ const GrievanceForm = ({ user = {} }) => {
                 fullWidth
                 variant="outlined"
                 disabled
-                value="123-456-7890" // Replace with your actual helpline number
+                value="894-782-8956"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -123,8 +99,14 @@ const GrievanceForm = ({ user = {} }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" sx={{ color: "#fff" }} variant="contained" color="primary">
-                Submit Grievance
+              <Button
+                type="submit"
+                sx={{ color: "#fff" }}
+                variant="contained"
+                color="primary"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : "Submit Grievance"}
               </Button>
             </Grid>
           </Grid>
