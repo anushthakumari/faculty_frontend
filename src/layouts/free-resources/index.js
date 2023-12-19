@@ -18,6 +18,7 @@ import useResourcesData from "./useResourcesData";
 import ViewFileData from "./ViewFileData";
 import { Stack } from "@mui/material";
 import Tutorials from "./Tutorials";
+import LoadingSpinner from "components/LoadingSpinner";
 
 //page components
 const CARD_PADDDING = "10px";
@@ -38,7 +39,7 @@ function FreeResources() {
     });
   };
 
-  const { columns, rows, fetchResources, resourcesData } = useResourcesData(openDetails);
+  const { columns, rows, fetchResources, resourcesData, isLoading } = useResourcesData(openDetails);
 
   const closeDetails = () => {
     setviewSate({
@@ -51,6 +52,7 @@ function FreeResources() {
 
   return (
     <DashboardLayout>
+      <LoadingSpinner isLoading={isLoading} />
       <DashboardNavbar absolute isMini />
       <MDBox>
         <MDTypography variant="h4" textTransform="capitalize" mb={3}>

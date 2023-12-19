@@ -21,10 +21,12 @@ const formatDate = (date) =>
   });
 
 const useResourcesData = (onAction) => {
+  const [isLoading, setisLoading] = useState(false);
   const [rows, setrows] = useState([]);
   const [resourcesData, setresourcesData] = useState([]);
 
   const fetchResources = useCallback(() => {
+    setisLoading(true);
     resourcesAPIs
       .get_res()
       .then((d) => {
@@ -82,6 +84,9 @@ const useResourcesData = (onAction) => {
       })
       .catch((e) => {
         console.log("cannot get assests!", e);
+      })
+      .finally((e) => {
+        setisLoading(false);
       });
   }, []);
 
@@ -94,6 +99,7 @@ const useResourcesData = (onAction) => {
     rows,
     fetchResources,
     resourcesData,
+    isLoading,
   };
 };
 

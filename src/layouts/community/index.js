@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -18,6 +18,7 @@ import { Stack } from "@mui/material";
 import Post from "./Post";
 
 import localStorage from "libs/localStorage";
+import LoadingSpinner from "components/LoadingSpinner";
 
 //page components
 const CARD_PADDDING = "10px";
@@ -26,14 +27,24 @@ const HEIGHT = "70vh";
 function Community() {
   const { t } = useTranslation();
 
-  const [posts, setposts] = useState(localStorage.getPosts());
+  const [posts, setposts] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
 
   const handleSuccess = () => {
     setposts(localStorage.getPosts());
   };
 
+  useEffect(() => {
+    setisLoading(true);
+    setTimeout(() => {
+      setposts(localStorage.getPosts());
+      setisLoading(false);
+    }, 500);
+  }, []);
+
   return (
     <DashboardLayout>
+      <LoadingSpinner isLoading={isLoading} />
       <DashboardNavbar absolute isMini />
       <MDBox>
         <MDTypography variant="h4" textTransform="capitalize" mb={3}>
