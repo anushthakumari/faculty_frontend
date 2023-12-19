@@ -236,7 +236,7 @@ const IndianLanguagesSelect = () => {
   const handleChange = (event) => {
     const val = event.target.value;
     localStorage.setLanguageCode(val);
-    window.location.reload();
+    window.location.href = "/";
   };
 
   return (
