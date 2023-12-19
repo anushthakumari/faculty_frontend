@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // react-router-dom components
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 
 // @mui material components
 import List from "@mui/material/List";
@@ -39,6 +39,8 @@ import driver_config from "configs/driver.config";
 import "driver.js/dist/driver.css";
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
+  const navigate = useNavigate();
+
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
   const location = useLocation();
@@ -204,13 +206,11 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
         <IndianLanguagesSelect />
 
         <MDButton
-          component="a"
-          href="https://www.creative-tim.com/product/material-dashboard-pro-react"
-          target="_blank"
           rel="noreferrer"
           variant="gradient"
           color={sidenavColor}
           fullWidth
+          onClick={() => navigate("/authentication/sign-in")}
         >
           {t("logout")}
         </MDButton>
