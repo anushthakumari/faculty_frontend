@@ -28,6 +28,11 @@ const defaultStats = {
   badge: "acharya",
 };
 
+const defaultUser = {
+  user_id: "randomstring123",
+  user_name: "Jai Shankar",
+};
+
 const setUser = (data = {}) => {
   secureLocalStorage.setItem(storage_keys.USER, data);
 };
@@ -38,12 +43,11 @@ const unsetUser = () => {
 
 const getUser = () => {
   const user = secureLocalStorage.getItem(storage_keys.USER);
-  return user
-    ? user
-    : {
-        user_id: "randomstring123",
-        user_name: "Jai Shankar",
-      };
+  return user;
+};
+
+const removeUser = () => {
+  secureLocalStorage.removeItem(storage_keys.USER);
 };
 
 const getPosts = () => {
@@ -172,6 +176,7 @@ const localStorage = {
   getCourses,
   setCourses,
   getStats,
+  removeUser,
 };
 
 export default localStorage;

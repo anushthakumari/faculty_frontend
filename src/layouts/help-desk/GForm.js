@@ -1,14 +1,15 @@
 // GrievanceForm.js
 import React, { useState } from "react";
+import moment from "moment";
+
 import { TextField, Button, Container, Typography, Box, Grid, InputAdornment } from "@mui/material";
 import { HelpOutline as HelpOutlineIcon } from "@mui/icons-material";
-import DateTimePicker from "react-datetime-picker";
+import DatePicker from "react-datepicker";
 import MDTypography from "components/MDTypography";
 
-import "react-datetime-picker/dist/DateTimePicker.css";
-import "react-calendar/dist/Calendar.css";
-import "react-clock/dist/Clock.css";
 import { toast } from "react-toastify";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const GrievanceForm = ({ user = {} }) => {
   const [dateTime, setdateTime] = useState();
@@ -29,7 +30,14 @@ const GrievanceForm = ({ user = {} }) => {
   };
 
   const handleDateTimeChange = (dateTime) => {
-    setFormData({ ...formData, dateTime });
+    const isFutureDate = moment(dateTime).isAfter(moment());
+
+    if (isFutureDate) {
+      toast.error("Date Time cannot be more than current time!");
+      return;
+    }
+
+    setdateTime(dateTime);
   };
 
   const handleSubmit = (event) => {
@@ -44,6 +52,8 @@ const GrievanceForm = ({ user = {} }) => {
     }, 500);
   };
 
+  console.log(dateTime);
+
   return (
     <Container>
       <Box mt={3}>
@@ -53,8 +63,8 @@ const GrievanceForm = ({ user = {} }) => {
         <form onSubmit={handleSubmit}>
           <MDTypography variant="body2">When did that happen?</MDTypography>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <DateTimePicker onChange={setdateTime} value={dateTime} />
+            <Grid position={"relative"} zIndex={999999} item xs={12}>
+              <DatePicker onChange={handleDateTimeChange} selected={dateTime} />
             </Grid>
             <Grid item xs={12}>
               <TextField

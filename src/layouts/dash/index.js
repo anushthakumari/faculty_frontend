@@ -24,8 +24,9 @@ import driver_config from "configs/driver.config";
 function Billing() {
   useEffect(() => {
     const is_alredy_onboarded = localStorage.getOnboardState();
+    const userData = localStorage.getUser();
 
-    if (!is_alredy_onboarded) {
+    if (!is_alredy_onboarded && userData) {
       const driverObj = driver(driver_config);
       driverObj.drive();
       localStorage.setOnboardState(true);

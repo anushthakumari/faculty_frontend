@@ -210,7 +210,10 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           variant="gradient"
           color={sidenavColor}
           fullWidth
-          onClick={() => navigate("/authentication/sign-in")}
+          onClick={() => {
+            localStorage.removeUser();
+            navigate("/authentication/sign-in");
+          }}
         >
           {t("logout")}
         </MDButton>
