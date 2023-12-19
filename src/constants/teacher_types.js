@@ -1,7 +1,6 @@
 const teacher_types = {
-  govt: "goverment",
-  private: "private",
-  free: "Freelancer",
+  college_professor: "College proffesor",
+  export: "Expert",
 };
 
 export default teacher_types;

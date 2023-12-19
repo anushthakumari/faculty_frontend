@@ -11,6 +11,7 @@ import Footer from "examples/Footer";
 // Overview page components
 import Header from "layouts/help-desk/components/Header";
 import HelpForm from "./components/HelpForm";
+import GForm from "./GForm";
 
 function Overview() {
   return (
@@ -18,7 +19,8 @@ function Overview() {
       <MDBox mb={2} />
       <Header>
         <MDBox mt={5} mb={3}>
-          <HelpForm />
+          {/* <HelpForm /> */}
+          <GForm />
         </MDBox>
       </Header>
       <Footer />

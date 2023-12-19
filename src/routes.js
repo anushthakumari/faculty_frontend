@@ -183,6 +183,7 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/sign-up",
     component: <SignUp />,
+    hideInSideNav: true,
   },
 ];
 

@@ -66,6 +66,7 @@ function Cover() {
     const fd = new FormData();
     fd.append("username", userData.name);
     fd.append("password", userData.password);
+    fd.append("email", userData.email);
     fd.append("teacher_type", userData.teacher_type);
     fd.append("profile_picture", file);
 
@@ -139,14 +140,14 @@ function Cover() {
               <Select
                 labelId="indian-language-label"
                 style={{ height: "100%", backgroundColor: "white", color: "#000" }}
-                defaultValue={teacher_types.govt}
+                defaultValue={teacher_types.college_professor}
                 name="teacher_type"
                 // value={selectedLanguage}
                 // onChange={handleChange}
               >
                 {Object.values(teacher_types).map((v) => (
                   <MenuItem sx={{ textTransform: "capitalize" }} key={v} value={v}>
-                    {v + " Teacher"}
+                    {v}
                   </MenuItem>
                 ))}
               </Select>
