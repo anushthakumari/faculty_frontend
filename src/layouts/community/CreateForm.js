@@ -39,12 +39,14 @@ const CreateForm = ({ onSuccess }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    setisLoading(true);
+
     const userData = localStorage.getUser();
 
     const body = {
       id: uuid(),
       caption: description.trim(),
-      mediaUrl: URL.createObjectURL(selectedFile),
+      mediaUrl: selectedFile ? URL.createObjectURL(selectedFile) : null,
       likesCount: 0,
       commentsCount: 0,
       ...userData,
@@ -53,8 +55,12 @@ const CreateForm = ({ onSuccess }) => {
 
     localStorage.savePost(body);
 
-    onSuccess?.(body);
-    toast.success("Posted Successfully!");
+    setTimeout(() => {
+      onSuccess?.(body);
+      toast.success("Posted Successfully!");
+
+      setisLoading(false);
+    }, 500);
   };
 
   return (

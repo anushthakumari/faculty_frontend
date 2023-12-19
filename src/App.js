@@ -30,6 +30,8 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+
 // Material Dashboard 2 React routes
 import routes from "routes";
 
@@ -128,7 +130,7 @@ export default function App() {
       onClick={handleConfiguratorOpen}
     >
       <Icon fontSize="small" color="inherit">
-        settings
+        <ContactSupportIcon />
       </Icon>
     </MDBox>
   );

@@ -138,9 +138,9 @@ function Configurator() {
         px={3}
       >
         <MDBox>
-          <MDTypography variant="h5">Material UI Configurator</MDTypography>
+          <MDTypography variant="h5">Instant Help Center</MDTypography>
           <MDTypography variant="body2" color="text">
-            See our dashboard options.
+            Get Instant Help Here
           </MDTypography>
         </MDBox>
 
@@ -161,7 +161,7 @@ function Configurator() {
 
       <Divider />
 
-      <MDBox pt={0.5} pb={3} px={3}>
+      {/* <MDBox pt={0.5} pb={3} px={3}>
         <MDBox>
           <MDTypography variant="h6">Sidenav Colors</MDTypography>
 
@@ -339,7 +339,7 @@ function Configurator() {
             </MDButton>
           </MDBox>
         </MDBox>
-      </MDBox>
+      </MDBox> */}
     </ConfiguratorRoot>
   );
 }

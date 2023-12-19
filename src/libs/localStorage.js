@@ -46,9 +46,10 @@ const getPosts = () => {
         {
           id: 0,
           ...user,
-          caption: "I am having a good time here..",
+          caption:
+            "I have found a really good diagram explaining the human heart, i would like to share it to you guys",
           mediaUrl:
-            "https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2018/02/thumb_720_450_Jungledreamstime_l_56902828.jpg",
+            "https://cdn.britannica.com/05/85505-050-44E1AD82/Cross-section-human-heart.jpg",
           likesCount: 1,
           commentsCount: 0,
           createdAt: new Date().toISOString(),
