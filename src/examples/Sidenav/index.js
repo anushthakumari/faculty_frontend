@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { driver } from "driver.js";
 
 // react-router-dom components
 import { useLocation, NavLink } from "react-router-dom";
@@ -153,16 +152,6 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       return returnValue;
     }
   );
-
-  useEffect(() => {
-    const is_alredy_onboarded = localStorage.getOnboardState();
-
-    if (!is_alredy_onboarded) {
-      const driverObj = driver(driver_config);
-      driverObj.drive();
-      localStorage.setOnboardState(true);
-    }
-  }, []);
 
   return (
     <SidenavRoot

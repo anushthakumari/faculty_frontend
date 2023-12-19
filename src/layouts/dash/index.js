@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { driver } from "driver.js";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -15,7 +18,20 @@ import CourseList from "./CourseList";
 import ResourcesList from "./resources-list/";
 import News from "./news";
 
+import localStorage from "libs/localStorage";
+import driver_config from "configs/driver.config";
+
 function Billing() {
+  useEffect(() => {
+    const is_alredy_onboarded = localStorage.getOnboardState();
+
+    if (!is_alredy_onboarded) {
+      const driverObj = driver(driver_config);
+      driverObj.drive();
+      localStorage.setOnboardState(true);
+    }
+  }, []);
+
   return (
     <DashboardLayout>
       <DashboardNavbar absolute isMini />

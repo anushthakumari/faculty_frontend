@@ -194,6 +194,10 @@
         "driver_title": "Rate Other Courses",
         "driver_description": "Rate other teacher courses and earn credit points!"
     },
+    "rate_courses_details": {
+        "page_title": "Rate Courses Created By Others",
+        "rate_the_course": "Rate The Course"
+    },
     "help_desk": {
         "faqs": {
             "que1": "What is this app for?",

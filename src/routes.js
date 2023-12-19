@@ -10,6 +10,9 @@ import CourseComments from "layouts/course-comments";
 import Earn from "layouts/earn";
 import Community from "layouts/community";
 import RateCourses from "layouts/rate-courses";
+import RateCourseDetails from "layouts/rate-course-details";
+import SignIn from "layouts/authentication/sign-in";
+import SignUp from "layouts/authentication/sign-up";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -141,6 +144,19 @@ const routes = [
   },
   {
     type: "collapse",
+    name: "Rate Courses This Course",
+    key: "rate_course_details",
+    icon: (
+      <Icon fontSize="small">
+        <GradeIcon />
+      </Icon>
+    ),
+    route: "/rate_course_details/:id",
+    component: <RateCourseDetails />,
+    hideInSideNav: true,
+  },
+  {
+    type: "collapse",
     name: "Help Desk",
     key: "help_desk",
     icon: (
@@ -151,22 +167,23 @@ const routes = [
     route: "/help_desk",
     component: <HelpDesk />,
   },
-  // {
-  //   type: "collapse",
-  //   name: "Sign In",
-  //   key: "sign-in",
-  //   icon: <Icon fontSize="small">login</Icon>,
-  //   route: "/authentication/sign-in",
-  //   component: <SignIn />,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Sign Up",
-  //   key: "sign-up",
-  //   icon: <Icon fontSize="small">assignment</Icon>,
-  //   route: "/authentication/sign-up",
-  //   component: <SignUp />,
-  // },
+  {
+    type: "collapse",
+    name: "Sign In",
+    key: "sign-in",
+    icon: <Icon fontSize="small">login</Icon>,
+    route: "/authentication/sign-in",
+    component: <SignIn />,
+    hideInSideNav: true,
+  },
+  {
+    type: "collapse",
+    name: "Sign Up",
+    key: "sign-up",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/authentication/sign-up",
+    component: <SignUp />,
+  },
 ];
 
 export default routes;
