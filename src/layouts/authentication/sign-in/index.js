@@ -52,7 +52,7 @@ function Basic() {
         password,
       })
       .then(({ data }) => {
-        localStorage.setUser({ user_id: data._id, user_name: data.username });
+        localStorage.setUser({ user_id: data._id, user_name: data.username, ...data });
         navigate("/dashboard");
       })
       .catch((e) => {
@@ -112,7 +112,13 @@ function Basic() {
               <MDInput type="password" label="Password" name="password" fullWidth required />
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton type="submit" variant="gradient" color="info" disable={isLoading} fullWidth>
+              <MDButton
+                type="submit"
+                variant="gradient"
+                color="info"
+                disabled={isLoading}
+                fullWidth
+              >
                 {isLoading ? "Loading.." : "Sign In"}
               </MDButton>
             </MDBox>

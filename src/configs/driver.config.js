@@ -41,15 +41,15 @@ const driver_config = {
         align: "start",
       },
     },
-    {
-      element: "#side_nav_earn",
-      popover: {
-        title: t("earn.driver_title"),
-        description: t("earn.driver_description"),
-        side: "left",
-        align: "start",
-      },
-    },
+    // {
+    //   element: "#side_nav_earn",
+    //   popover: {
+    //     title: t("earn.driver_title"),
+    //     description: t("earn.driver_description"),
+    //     side: "left",
+    //     align: "start",
+    //   },
+    // },
     {
       element: "#side_nav_community",
       popover: {

@@ -1,4 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,8 +43,10 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "co
 // Images
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
+import WelcomeModal from "components/WelcomModal";
 
 export default function App() {
+  const [searchParams] = useSearchParams();
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -57,6 +61,8 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+
+  const do_open_welcome = searchParams.get("open") === "welcome";
 
   // Cache for the rtl
   useMemo(() => {
@@ -175,6 +181,7 @@ export default function App() {
           />
           <Configurator />
           {configsButton}
+          <WelcomeModal open={do_open_welcome} />
         </>
       )}
       {layout === "vr" && <Configurator />}

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// react-router-dom components
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // @mui material components
 import Card from "@mui/material/Card";
-import Checkbox from "@mui/material/Checkbox";
 import { FormControl, MenuItem, Select } from "@mui/material";
 
 import Button from "@mui/material/Button";
@@ -16,7 +14,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
@@ -24,16 +21,15 @@ import MDButton from "components/MDButton";
 
 import axios from "axios";
 
-// Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 import Capture from "./Capture";
 
-// Images
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 
 import teacher_types from "constants/teacher_types";
 import api_urls from "constants/api_urls";
 import localStorage from "libs/localStorage";
+import helperApis from "apis/helper.apis";
 
 function Cover() {
   const [open, setOpen] = useState(false);
@@ -42,7 +38,7 @@ function Cover() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const name = e.target.name.value.trim();
@@ -62,7 +58,7 @@ function Cover() {
     setOpen(true);
   };
 
-  const handleImageCapture = (file) => {
+  const handleImageCapture = async (file) => {
     setOpen(false);
     setisLoading(true);
 
@@ -71,17 +67,22 @@ function Cover() {
     fd.append("password", userData.password);
     fd.append("email", userData.email);
     fd.append("teacher_type", userData.teacher_type);
-    fd.append("profile_picture", file);
+
+    const file_url = await helperApis.upload_file(file);
+
+    fd.append("profile_picture", file_url);
 
     axios
-      .post(api_urls.LMS_USERS_BASE_URL + "register", fd, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      .post(api_urls.LMS_USERS_BASE_URL + "register", {
+        username: userData.name,
+        password: userData.password,
+        teacher_type: userData.teacher_type,
+        email: userData.email,
+        profile_picture: file_url,
       })
       .then(({ data }) => {
-        localStorage.setUser({ user_id: data._id, user_name: data.username });
-        navigate("/dashboard");
+        localStorage.setUser({ user_id: data._id, user_name: data.username, ...data });
+        navigate("/profile?open=welcome");
       })
       .catch((e) => {
         console.log(e);
@@ -166,7 +167,13 @@ function Cover() {
               </Select>
             </FormControl>
             <MDBox mt={4} mb={1}>
-              <MDButton type="submit" variant="gradient" color="info" fullWidth>
+              <MDButton
+                type="submit"
+                variant="gradient"
+                color="info"
+                disabled={isLoading}
+                fullWidth
+              >
                 {isLoading ? "Loading.." : "Sign Up"}
               </MDButton>
             </MDBox>

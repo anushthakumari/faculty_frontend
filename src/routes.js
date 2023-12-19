@@ -14,6 +14,7 @@ import LeaderBorard from "layouts/leaderboard";
 import RateCourseDetails from "layouts/rate-course-details";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import TeacherProfile from "layouts/teacher-profile";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -23,6 +24,7 @@ import InterestsIcon from "@mui/icons-material/Interests";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import GradeIcon from "@mui/icons-material/Grade";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const routes = [
   {
@@ -83,18 +85,18 @@ const routes = [
   //   route: "/rtl",
   //   component: <RTL />,
   // },
-  {
-    type: "collapse",
-    name: "Earn",
-    key: "earn",
-    icon: (
-      <Icon fontSize="small">
-        <MonetizationOnIcon />
-      </Icon>
-    ),
-    route: "/earn",
-    component: <Earn />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Earn",
+  //   key: "earn",
+  //   icon: (
+  //     <Icon fontSize="small">
+  //       <MonetizationOnIcon />
+  //     </Icon>
+  //   ),
+  //   route: "/earn",
+  //   component: <Earn />,
+  // },
   {
     type: "collapse",
     name: "leaderboard",
@@ -167,6 +169,18 @@ const routes = [
     route: "/rate_course_details/:id",
     component: <RateCourseDetails />,
     hideInSideNav: true,
+  },
+  {
+    type: "collapse",
+    name: "Help Desk",
+    key: "profile",
+    icon: (
+      <Icon fontSize="small">
+        <AccountBoxIcon />
+      </Icon>
+    ),
+    route: "/profile",
+    component: <TeacherProfile />,
   },
   {
     type: "collapse",

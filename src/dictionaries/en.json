@@ -40,7 +40,8 @@
         "free_resources": "Free Resources",
         "help_desk": "Help Desk",
         "rate_courses": "Rate Courses",
-        "leaderboard":"Leaderboard"
+        "leaderboard": "Leaderboard",
+        "profile": "profile"
     },
     "dashboard": {
         "best_course_heading": "Your Best Performing Course",
