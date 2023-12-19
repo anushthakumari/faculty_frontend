@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -15,12 +17,32 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 import reportsBarChartData from "layouts/analytics/data/reportsBarChartData";
 import reportsLineChartData from "layouts/analytics/data/reportsLineChartData";
 import { useTranslation } from "react-i18next";
+import LoadingSpinner from "components/LoadingSpinner";
+
+const defaultStats = {
+  course_count: 2,
+  student_count: 2,
+  credit_points: 2500,
+  resourse_count: 2,
+};
 
 function Dashboard() {
+  const [isLoading, setisLoading] = useState(false);
+  const [data, setdata] = useState({});
+
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setisLoading(true);
+    setTimeout(() => {
+      setdata(defaultStats);
+      setisLoading(false);
+    }, 500);
+  }, []);
 
   return (
     <DashboardLayout>
+      <LoadingSpinner isLoading={isLoading} />
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -29,7 +51,7 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title={t("commons.courses")}
-                count={1}
+                count={data.course_count}
                 percentage={{
                   label: t("commons.just_updated"),
                 }}
@@ -41,7 +63,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title={t("dashboard.student_enrolled")}
-                count={2}
+                count={data.student_count}
                 percentage={{
                   color: "success",
                   amount: "+1%",
@@ -56,7 +78,7 @@ function Dashboard() {
                 color="success"
                 icon="store"
                 title={t("commons.credit_points")}
-                count="2500"
+                count={data.credit_points}
                 percentage={{
                   color: "success",
                   amount: "+1%",
@@ -71,7 +93,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title={t("commons.resources")}
-                count="1"
+                count={data.resourse_count}
                 percentage={{
                   color: "success",
                   amount: "",

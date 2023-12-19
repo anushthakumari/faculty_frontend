@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // @mui material components
@@ -13,15 +13,18 @@ import MDTypography from "components/MDTypography";
 
 import DataTable from "examples/Tables/DataTable";
 
+import LoadingSpinner from "components/LoadingSpinner";
+
 import useCoursesData from "./useCoursesData";
 
 function Courses() {
-  const { columns, rows, fetchData, coursesData } = useCoursesData();
+  const { columns, rows, fetchData, coursesData, isLoading } = useCoursesData();
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
 
   return (
     <DashboardLayout>
+      <LoadingSpinner isLoading={isLoading} />
       <DashboardNavbar absolute isMini />
       <MDBox>
         <MDTypography variant="h3">{t("courses.page_title")}</MDTypography>
