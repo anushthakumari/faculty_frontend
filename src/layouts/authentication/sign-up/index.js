@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // react-router-dom components
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -37,6 +38,7 @@ import localStorage from "libs/localStorage";
 function Cover() {
   const [open, setOpen] = useState(false);
   const [userData, setuserData] = useState({});
+  const [isLoading, setisLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -62,10 +64,12 @@ function Cover() {
 
   const handleImageCapture = (file) => {
     setOpen(false);
+    setisLoading(true);
 
     const fd = new FormData();
     fd.append("username", userData.name);
     fd.append("password", userData.password);
+    fd.append("email", userData.email);
     fd.append("teacher_type", userData.teacher_type);
     fd.append("profile_picture", file);
 
@@ -79,7 +83,17 @@ function Cover() {
         localStorage.setUser({ user_id: data._id, user_name: data.username });
         navigate("/dashboard");
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        if (e.response?.data?.message) {
+          toast.error(e.response?.data?.message);
+        } else {
+          toast.error("something went wrong!");
+        }
+      })
+      .finally((e) => {
+        setisLoading(false);
+      });
   };
 
   return (
@@ -153,7 +167,7 @@ function Cover() {
             </FormControl>
             <MDBox mt={4} mb={1}>
               <MDButton type="submit" variant="gradient" color="info" fullWidth>
-                sign up
+                {isLoading ? "Loading.." : "Sign Up"}
               </MDButton>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">
