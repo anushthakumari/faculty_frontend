@@ -22,7 +22,7 @@ import api_urls from "constants/api_urls";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const header_img_url = "https://www.sterlitepower.com/wp-content/uploads/2021/06/primary_big-1.jpg";
+const header_img_url = "/bg.png";
 
 const goToAdmin = () => {
   window.location.href = api_urls.ADMIN_DASH_LOGIN_URL;
@@ -46,7 +46,7 @@ export default function Home() {
         </Toolbar>
       </AppBar>
       <main>
-        <img src={header_img_url} width="100%" height={200} style={{ objectFit: "cover  " }} />
+        <img src={header_img_url} width="100%" height={300} style={{ objectFit: "cover  " }} />
         {/* Hero unit */}
         <Box
           sx={{
