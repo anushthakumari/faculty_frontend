@@ -15,6 +15,7 @@ import RateCourseDetails from "layouts/rate-course-details";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import TeacherProfile from "layouts/teacher-profile";
+import Home from "layouts/home";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -210,6 +211,15 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/sign-up",
     component: <SignUp />,
+    hideInSideNav: true,
+  },
+  {
+    type: "collapse",
+    name: "Home",
+    key: "home",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/",
+    component: <Home />,
     hideInSideNav: true,
   },
 ];
