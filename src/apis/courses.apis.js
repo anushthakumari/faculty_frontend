@@ -41,11 +41,35 @@ const publishCourse = async (course_id, chapters, is_published = true) => {
   return data;
 };
 
+const getCourseByUserId = async (user_id = "") => {
+  const { data } = await axios.get(api_urls.LMS_USERS_BASE_URL + "user/" + user_id + "/courses");
+
+  return data;
+};
+
+const getCourseAnalyticsByUserId = async (user_id = "") => {
+  const { data } = await axios.get(api_urls.LMS_USERS_BASE_URL + "user/" + user_id + "/analytics");
+
+  return data;
+};
+
+const getDashboard = async () => {
+  const userData = localStorage.getUser();
+  const { data } = await axios.get(
+    api_urls.LMS_USERS_BASE_URL + "user/" + userData.user_id + "/dash"
+  );
+
+  return data;
+};
+
 const coursesAPIs = {
   createCourses,
   getCourseById,
   saveCourse,
   publishCourse,
+  getCourseByUserId,
+  getCourseAnalyticsByUserId,
+  getDashboard,
 };
 
 export default coursesAPIs;

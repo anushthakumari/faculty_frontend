@@ -12,7 +12,7 @@ import MDTypography from "components/MDTypography";
 import Course from "layouts/dash/CourseList/Course";
 import { useTranslation } from "react-i18next";
 
-function CourseList() {
+function CourseList({ courses }) {
   const { t } = useTranslation();
 
   return (
@@ -31,13 +31,11 @@ function CourseList() {
           m={0}
           sx={{ listStyle: "none" }}
         >
-          <Course
-            color="success"
-            icon="expand_less"
-            name="A Human Heart Anatomy"
-            description="27 March 2020, at 04:30 AM"
-            value="+ $ 2,000"
-          />
+          {courses?.map((v, i) => (
+            <Course key={i} color="success" icon="expand_less" name={v.title} />
+          ))}
+
+          {!courses?.length ? "No courses by you Yet" : ""}
         </MDBox>
       </MDBox>
     </Card>

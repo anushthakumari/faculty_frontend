@@ -20,7 +20,7 @@ const defaultStats = localStorage.getStats();
 
 const CARD_PADDDING = "15px";
 
-function BestCourse() {
+function BestCourse({ details = {} }) {
   const { t } = useTranslation();
 
   return (
@@ -35,7 +35,7 @@ function BestCourse() {
         </MDTypography>
       </MDBox>
       <MDBox>
-        <OutlinedCard />
+        <OutlinedCard title={details?.title} />
 
         <Divider sx={{ bgcolor: "#000", marginTop: "50px" }} />
         <MDBox mt={3}>
@@ -50,7 +50,7 @@ function BestCourse() {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                {defaultStats.student_count}
+                {details?.student_count || 0}
               </MDTypography>
             </Grid>
           </Grid>
@@ -62,7 +62,7 @@ function BestCourse() {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                {defaultStats.avg_eng}
+                {details?.avg_eng || "0%"}
               </MDTypography>
             </Grid>
           </Grid>
@@ -74,7 +74,7 @@ function BestCourse() {
             </Grid>
             <Grid xs={6} md={6} item>
               <MDTypography textAlign="right" variant="body2" fontWeight="bold">
-                {defaultStats.avg_rating}
+                {details?.avg_rating || 0}
               </MDTypography>
             </Grid>
           </Grid>
@@ -94,14 +94,14 @@ function BestCourse() {
 
 export default BestCourse;
 
-function OutlinedCard() {
+function OutlinedCard({ title }) {
   const { t } = useTranslation();
 
   return (
     <Box sx={{ minWidth: 275 }}>
       <Card sx={{ boxShadow: "none", border: "1px solid #d3d3d3" }} variant="outlined">
         <CardContent>
-          <MDTypography variant="body1">A Human Heart Anatomy</MDTypography>
+          <MDTypography variant="body1">{title}</MDTypography>
         </CardContent>
         <CardMedia
           component="img"

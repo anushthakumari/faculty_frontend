@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { driver } from "driver.js";
 
 // @mui material components
@@ -20,17 +20,31 @@ import News from "./news";
 
 import localStorage from "libs/localStorage";
 import driver_config from "configs/driver.config";
+import coursesAPIs from "apis/courses.apis";
 
 function Billing() {
-  useEffect(() => {
-    const is_alredy_onboarded = localStorage.getOnboardState();
-    const userData = localStorage.getUser();
+  const [data, setdata] = useState({});
 
-    if (!is_alredy_onboarded && userData) {
-      const driverObj = driver(driver_config);
-      driverObj.drive();
-      localStorage.setOnboardState(true);
+  useEffect(() => {
+    async function getDash() {
+      const d = await coursesAPIs.getDashboard();
+      setdata(d);
     }
+
+    getDash()
+      .then((v) => {
+        setTimeout((v) => {
+          const is_alredy_onboarded = localStorage.getOnboardState();
+          const userData = localStorage.getUser();
+
+          if (!is_alredy_onboarded && userData) {
+            const driverObj = driver(driver_config);
+            driverObj.drive();
+            localStorage.setOnboardState(true);
+          }
+        }, 800);
+      })
+      .catch(() => {});
   }, []);
 
   return (
@@ -40,15 +54,15 @@ function Billing() {
         <MDBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
-              <BestCourse />
+              <BestCourse details={data?.courses?.[0]} />
               <MDBox mt={2}>
-                <CourseList />
+                <CourseList courses={data?.courses} />
               </MDBox>
             </Grid>
             <Grid item xs={12} md={4}>
-              <CreditDetails />
+              <CreditDetails stats={data?.stats || {}} />
               <MDBox mt={2}>
-                <ResourcesList />
+                <ResourcesList list={data.resources} />
               </MDBox>
             </Grid>
             <Grid item xs={12} md={4}>

@@ -8,6 +8,8 @@ import MDBadge from "components/MDBadge";
 import localStorage from "libs/localStorage";
 
 import i18next from "i18n";
+import coursesAPIs from "apis/courses.apis";
+import { toast } from "react-toastify";
 
 const columns = [
   { Header: "Title", accessor: "title", width: "45%", align: "left" },
@@ -15,7 +17,7 @@ const columns = [
   { Header: "Created At", accessor: "createdAt", align: "center" },
   { Header: "view", accessor: "view", align: "center" },
   { Header: "Edit", accessor: "edit", align: "center" },
-  { Header: "Comments", accessor: "comments", align: "center" },
+  // { Header: "Comments", accessor: "comments", align: "center" },
 ];
 
 const formatDate = (date) =>
@@ -25,8 +27,6 @@ const formatDate = (date) =>
     day: "numeric",
   });
 
-const courses = localStorage.getCourses();
-
 const useCoursesData = (onAction) => {
   const [rows, setrows] = useState([]);
   const [coursesData, setcoursesData] = useState([]);
@@ -34,10 +34,12 @@ const useCoursesData = (onAction) => {
 
   const navigate = useNavigate();
 
-  const fetchData = useCallback(() => {
-    setisLoading(true);
-    setTimeout(() => {
-      setcoursesData(courses);
+  const fetchData = useCallback(async () => {
+    try {
+      setisLoading(true);
+
+      const userData = localStorage.getUser();
+      const courses = await coursesAPIs.getCourseByUserId(userData.user_id);
       setrows(
         courses.map((v) => ({
           title: (
@@ -64,25 +66,25 @@ const useCoursesData = (onAction) => {
               {v.student_count}
             </MDTypography>
           ),
-          comments: (
-            <MDTypography
-              variant="body2"
-              color="text"
-              fontWeight="medium"
-              onClick={() => {
-                navigate("/course_comments/" + v.id);
-              }}
-            >
-              {i18next.t("courses.view_comments")}
-            </MDTypography>
-          ),
+          // comments: (
+          //   <MDTypography
+          //     variant="body2"
+          //     color="text"
+          //     fontWeight="medium"
+          //     onClick={() => {
+          //       navigate("/course_comments/" + v.id);
+          //     }}
+          //   >
+          //     {i18next.t("courses.view_comments")}
+          //   </MDTypography>
+          // ),
           edit: (
             <MDTypography
               variant="body2"
               color="text"
               fontWeight="medium"
               onClick={() => {
-                navigate("/edit_course/" + v.id);
+                navigate("/edit_course/" + v._id);
               }}
             >
               {i18next.t("courses.edit_course")}
@@ -91,8 +93,8 @@ const useCoursesData = (onAction) => {
           status: (
             <MDBox ml={-1}>
               <MDBadge
-                badgeContent={v.status}
-                color={v.status === "published" ? "success" : "secondary"}
+                badgeContent={v.is_published ? "Published" : "Unpublished"}
+                color={v.is_published ? "success" : "secondary"}
                 variant="gradient"
                 size="lg"
               />
@@ -117,8 +119,12 @@ const useCoursesData = (onAction) => {
           ),
         }))
       );
+      setcoursesData(courses);
+    } catch (error) {
+      toast.error("something went wrong!");
+    } finally {
       setisLoading(false);
-    }, 500);
+    }
   }, []);
 
   useEffect(() => {

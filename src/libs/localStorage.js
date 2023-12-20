@@ -19,10 +19,10 @@ const default_courses = [
 ];
 
 const defaultStats = {
-  course_count: 2,
-  student_count: 2,
-  credit_points: 2500,
-  resourse_count: 2,
+  course_count: 0,
+  student_count: 0,
+  credit_points: 0,
+  resourse_count: 0,
   avg_eng: "80%",
   avg_rating: 4,
   badge: "acharya",

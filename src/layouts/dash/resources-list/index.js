@@ -12,7 +12,7 @@ import MDTypography from "components/MDTypography";
 import Resource from "layouts/dash/resources-list/Resource";
 import { useTranslation } from "react-i18next";
 
-function ResourcesList() {
+function ResourcesList({ list }) {
   const { t } = useTranslation();
 
   return (
@@ -31,20 +31,10 @@ function ResourcesList() {
           m={0}
           sx={{ listStyle: "none" }}
         >
-          <Resource
-            color="success"
-            icon="expand_less"
-            name="Human Heart Anatomy Image"
-            description="20 Dec 2023"
-            value="0 Usage"
-          />
-          <Resource
-            color="success"
-            icon="expand_less"
-            name="A Realistic Human Heart"
-            description="17 Dec 2023"
-            value="2 Usage"
-          />
+          {list?.map((v, i) => (
+            <Resource key={i} color="success" icon="expand_less" name={v.title} value="0 Usage" />
+          ))}
+          {!list?.length ? "No resources Yet" : ""}
         </MDBox>
       </MDBox>
     </Card>

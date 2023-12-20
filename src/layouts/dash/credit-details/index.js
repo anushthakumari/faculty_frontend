@@ -14,10 +14,11 @@ import localStorage from "libs/localStorage";
 
 const CARD_PADDDING = "15px";
 
-const defaultStats = localStorage.getStats();
-
-const CreditDetails = () => {
+const CreditDetails = ({ stats }) => {
   const { t } = useTranslation();
+
+  const defaultStats = stats;
+
   return (
     <Card
       sx={{
