@@ -15,6 +15,8 @@ import MDButton from "components/MDButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ReactPlayer from "react-player";
+import { toast } from "react-toastify";
+import coursesAPIs from "apis/courses.apis";
 
 //page components
 const CARD_PADDDING = "15px";
@@ -24,10 +26,21 @@ function CreateCourse() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const handleNameSubmit = (e) => {
-    e.preventDefault();
-    const course_name = e.target.course_name.value.trim();
-    navigate("/edit_course/" + course_name);
+  const [isLoading, setisLoading] = useState(false);
+
+  const handleNameSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const course_name = e.target.course_name.value.trim();
+
+      const d = await coursesAPIs.createCourses(course_name);
+
+      navigate("/edit_course/" + d._id);
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setisLoading(false);
+    }
   };
 
   return (
@@ -74,8 +87,8 @@ function CreateCourse() {
                       }}
                       required
                     />
-                    <MDButton type="submit" color="primary" size="large">
-                      {t("add_course.start")}
+                    <MDButton type="submit" color="primary" size="large" disabled={isLoading}>
+                      {isLoading ? "Loading..." : t("add_course.start")}
                     </MDButton>
                   </MDBox>
                 </Card>

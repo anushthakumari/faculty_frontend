@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
@@ -21,6 +22,10 @@ import MDTypography from "components/MDTypography";
 
 import element_types from "constants/element_types";
 import MDButton from "components/MDButton";
+
+import { useModuleBuilderState } from "../ModuleBuilderState.provider";
+import { toast } from "react-toastify";
+import coursesAPIs from "apis/courses.apis";
 
 const items = [
   {
@@ -68,8 +73,38 @@ const items = [
 const ControlPanel = () => {
   const { t } = useTranslation();
 
+  const { data, setisLoading, courseDetails, setcourseDetails } = useModuleBuilderState();
+  const { id: course_id } = useParams();
+
   const handleDragStart = (type, e) => {
     e.dataTransfer.setData("element_type", type);
+  };
+
+  const handleSave = async () => {
+    try {
+      setisLoading(true);
+      await coursesAPIs.saveCourse(course_id, data);
+      toast.success("Saved successfully!");
+    } catch (error) {
+      toast.error("Error saving your content!");
+    } finally {
+      setisLoading(false);
+    }
+  };
+
+  const handlePublish = async () => {
+    try {
+      setisLoading(true);
+      const d = await coursesAPIs.publishCourse(course_id, data, !courseDetails.is_published);
+      if (d) {
+        setcourseDetails(d);
+      }
+      toast.success("Saved successfully!");
+    } catch (error) {
+      toast.error("Error saving your content!");
+    } finally {
+      setisLoading(false);
+    }
   };
 
   return (
@@ -115,11 +150,18 @@ const ControlPanel = () => {
           sx={{ color: "#fff" }}
           size="large"
           fullWidth
+          onClick={handleSave}
         >
           {t("add_course.save_changes")}
         </Button>
-        <MDButton startIcon={<PublishIcon />} color="primary" size="large" fullWidth>
-          {t("add_course.publish_changes")}
+        <MDButton
+          startIcon={<PublishIcon />}
+          color="primary"
+          size="large"
+          onClick={handlePublish}
+          fullWidth
+        >
+          {courseDetails?.is_published ? "Unpublish" : "Publish"}
         </MDButton>
       </Stack>
     </MDBox>

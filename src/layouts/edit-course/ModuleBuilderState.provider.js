@@ -1,7 +1,9 @@
-import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
+import React, { createContext, useContext, useState, useCallback, useMemo, useEffect } from "react";
 import { v4 as uuid } from "uuid";
+import { useParams } from "react-router-dom";
 
 import element_types from "constants/element_types";
+import coursesAPIs from "apis/courses.apis";
 
 const defaultSate = [
   //this array is representing a section
@@ -11,10 +13,14 @@ const defaultSate = [
   ],
 ];
 
-const ModuleBuilderStateContext = createContext(defaultSate);
+export const ModuleBuilderStateContext = createContext(defaultSate);
 
 const ModuleBuilderState = ({ children }) => {
   const [data, setdata] = useState(defaultSate);
+  const [isLoading, setisLoading] = useState(false);
+  const [courseDetails, setcourseDetails] = useState({});
+
+  const { id: course_id } = useParams();
 
   const addChapter = useCallback(() => {
     setdata((prev) => [
@@ -93,6 +99,10 @@ const ModuleBuilderState = ({ children }) => {
 
   const value = {
     data,
+    isLoading,
+    setisLoading,
+    courseDetails,
+    setcourseDetails,
     addChapter,
     removeChapterByIndex,
     addElementToChapter,
@@ -101,6 +111,26 @@ const ModuleBuilderState = ({ children }) => {
     editChapterElement,
     getChapterElementKeyValue,
   };
+
+  useEffect(() => {
+    setisLoading(true);
+    coursesAPIs
+      .getCourseById(course_id)
+      .then((d) => {
+        setcourseDetails(d ? d : {});
+
+        if (d?.chapters?.length) {
+          setdata(d.chapters);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("something went wrong!");
+      })
+      .finally((e) => {
+        setisLoading(false);
+      });
+  }, [course_id]);
 
   return (
     <ModuleBuilderStateContext.Provider value={value}>
