@@ -38,8 +38,7 @@ const Post = ({ post }) => {
       <Box sx={{ display: "flex", padding: "10px" }}>
         <Avatar src={post.userAvatar} alt={post.user_name} />
         <Box sx={{ marginLeft: "10px" }}>
-          <Typography variant="h6">{post.user_name}</Typography>
-          <Typography variant="body2">{formatDate(post.createdAt)}</Typography>
+          <Typography variant="h6">{post.username}</Typography>
         </Box>
         <Box sx={{ flexGrow: 1 }} />
         <IconButton onClick={handleMoreClick}>
@@ -52,7 +51,7 @@ const Post = ({ post }) => {
           <MenuItem>Report</MenuItem>
         </Menu>
       </Box>
-      {post.mediaUrl && <CardMedia component={"img"} image={post.mediaUrl} alt={post.caption} />}
+      {post.imageUrl && <CardMedia component={"img"} image={post.imageUrl} alt={post.caption} />}
       <CardContent>
         <Typography variant="body1">{post.caption}</Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "10px" }}>

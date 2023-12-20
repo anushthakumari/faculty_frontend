@@ -19,6 +19,7 @@ import Post from "./Post";
 
 import localStorage from "libs/localStorage";
 import LoadingSpinner from "components/LoadingSpinner";
+import postsAPIs from "apis/posts.apis";
 
 //page components
 const CARD_PADDDING = "10px";
@@ -31,15 +32,34 @@ function Community() {
   const [isLoading, setisLoading] = useState(false);
 
   const handleSuccess = () => {
-    setposts(localStorage.getPosts());
+    async function getPs() {
+      try {
+        setisLoading(true);
+        const d = await postsAPIs.getPosts();
+        setposts(d);
+      } catch (error) {
+      } finally {
+        setisLoading(false);
+      }
+    }
+
+    getPs();
   };
 
   useEffect(() => {
     setisLoading(true);
-    setTimeout(() => {
-      setposts(localStorage.getPosts());
-      setisLoading(false);
-    }, 500);
+    async function getPs() {
+      try {
+        setisLoading(true);
+        const d = await postsAPIs.getPosts();
+        setposts(d);
+      } catch (error) {
+      } finally {
+        setisLoading(false);
+      }
+    }
+
+    getPs();
   }, []);
 
   return (

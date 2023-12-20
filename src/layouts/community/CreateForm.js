@@ -12,6 +12,8 @@ import { Box, Button } from "@mui/material";
 
 import all_elements from "constants/element_types";
 import localStorage from "libs/localStorage";
+import helperApis from "apis/helper.apis";
+import postsAPIs from "apis/posts.apis";
 
 const element_types = {
   [all_elements.video]: "video/*",
@@ -36,31 +38,29 @@ const CreateForm = ({ onSuccess }) => {
     setSelectedFile(file);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
 
-    setisLoading(true);
+      setisLoading(true);
 
-    const userData = localStorage.getUser();
+      let imageUrl;
 
-    const body = {
-      id: uuid(),
-      caption: description.trim(),
-      mediaUrl: selectedFile ? URL.createObjectURL(selectedFile) : null,
-      likesCount: 0,
-      commentsCount: 0,
-      ...userData,
-      createdAt: new Date().toISOString(),
-    };
+      if (selectedFile) {
+        imageUrl = await helperApis.upload_file(selectedFile);
+      }
 
-    localStorage.savePost(body);
+      await postsAPIs.savePost(imageUrl, description);
 
-    setTimeout(() => {
-      onSuccess?.(body);
+      onSuccess?.();
       toast.success("Posted Successfully!");
+    } catch (error) {
+      console.log(error);
 
+      toast.error("something went wrong!");
+    } finally {
       setisLoading(false);
-    }, 500);
+    }
   };
 
   return (
