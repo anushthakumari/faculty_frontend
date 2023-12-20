@@ -30,6 +30,18 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 const routes = [
   {
     type: "collapse",
+    name: "Help Desk",
+    key: "profile",
+    icon: (
+      <Icon fontSize="small">
+        <AccountBoxIcon />
+      </Icon>
+    ),
+    route: "/profile",
+    component: <TeacherProfile />,
+  },
+  {
+    type: "collapse",
     name: "Dashboard",
     key: "dashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
@@ -146,43 +158,7 @@ const routes = [
     route: "/free_resources",
     component: <FreeResources />,
   },
-  {
-    type: "collapse",
-    name: "Rate Courses",
-    key: "rate_courses",
-    icon: (
-      <Icon fontSize="small">
-        <GradeIcon />
-      </Icon>
-    ),
-    route: "/rate_courses",
-    component: <RateCourses />,
-  },
-  {
-    type: "collapse",
-    name: "Rate Courses This Course",
-    key: "rate_course_details",
-    icon: (
-      <Icon fontSize="small">
-        <GradeIcon />
-      </Icon>
-    ),
-    route: "/rate_course_details/:id",
-    component: <RateCourseDetails />,
-    hideInSideNav: true,
-  },
-  {
-    type: "collapse",
-    name: "Help Desk",
-    key: "profile",
-    icon: (
-      <Icon fontSize="small">
-        <AccountBoxIcon />
-      </Icon>
-    ),
-    route: "/profile",
-    component: <TeacherProfile />,
-  },
+
   {
     type: "collapse",
     name: "Help Desk",
@@ -225,3 +201,29 @@ const routes = [
 ];
 
 export default routes;
+
+// {
+//   type: "collapse",
+//   name: "Rate Courses",
+//   key: "rate_courses",
+//   icon: (
+//     <Icon fontSize="small">
+//       <GradeIcon />
+//     </Icon>
+//   ),
+//   route: "/rate_courses",
+//   component: <RateCourses />,
+// },
+// {
+//   type: "collapse",
+//   name: "Rate Courses This Course",
+//   key: "rate_course_details",
+//   icon: (
+//     <Icon fontSize="small">
+//       <GradeIcon />
+//     </Icon>
+//   ),
+//   route: "/rate_course_details/:id",
+//   component: <RateCourseDetails />,
+//   hideInSideNav: true,
+// },
